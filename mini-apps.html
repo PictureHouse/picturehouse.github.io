@@ -59,6 +59,7 @@ permalink: /mini-apps/
       {% if app.tagline %}<p class="miniapp-modal__tagline">{{ app.tagline }}</p>{% endif %}
       <div class="hero-actions">
         {% if app.store_url and app.store_url != '#' %}<a class="btn btn--primary" href="{{ app.store_url }}" target="_blank" rel="noopener">App Store</a>{% endif %}
+        {% if app.github_url %}<a class="btn btn--primary" href="{{ app.github_url }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
         {% if app.privacy %}<a class="btn btn--ghost" href="{{ '/privacy/' | append: app.privacy | append: '/' | relative_url }}">개인정보처리방침</a>{% endif %}
       </div>
     </div>

@@ -5,27 +5,36 @@
 #
 # - letter: a                              # 알파벳 (소문자, 필수)
 #   name: Aurora                           # 앱 이름 (필수)
-#   tagline: 한 줄 소개                     # 툴팁에 표시 (선택)
+#   tagline: 한 줄 소개                     # 팝업·툴팁에 표시 (선택)
 #   icon: /assets/icons/mini/a.png         # 아이콘 경로 (필수)
-#   store_url: https://apps.apple.com/...  # 클릭 시 이동할 링크 (선택)
+#   store_url: https://apps.apple.com/...  # App Store 버튼 (선택)
+#   github_url: https://github.com/...     # GitHub 버튼 (선택)
 #   privacy: aurora                        # _privacy/aurora.md 연결 (선택)
+#   screenshots:                           # 팝업 스크린샷 (선택)
+#     - /assets/icons/mini/a-shot-1.png
+#   description: |                         # 팝업 본문, 마크다운 (선택)
+#     ## 소개
+#     ...
 
-- letter: a
-  name: Sample A
-  tagline: 샘플 미니앱입니다
-  icon: /assets/icons/mini/a.svg
-  store_url: "#"
-  privacy: sample-a
-  # screenshots:
-  #   - /assets/icons/mini/a-shot-1.png
+- letter: r
+  name: MyRaum
+  tagline: RoomPlan으로 공간을 기록하고 공유하는 앱
+  icon: /assets/icons/mini/r.svg
+  github_url: https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M15-RoomPlan
   description: |
     ## 소개
 
-    팝업에 표시되는 앱 소개입니다. 마크다운으로 자유롭게 작성할 수 있고,
-    miniapps.yml의 description 항목을 수정하면 이 내용이 바뀝니다.
+    MyRaum은 Apple의 RoomPlan과 Maps를 활용해 공간을 3D로 스캔하고,
+    위치 정보와 함께 생생하게 기록·공유할 수 있는 iOS 앱입니다.
+    Apple Developer Academy @ POSTECH의 NC2 프로젝트로 개발했습니다.
 
     ## 주요 기능
 
-    - 기능 1에 대한 설명
-    - 기능 2에 대한 설명
-    - 기능 3에 대한 설명
+    - 카메라와 LiDAR 센서로 공간을 스캔해 3D 평면 모델로 캡쳐 (RoomPlan)
+    - 캡쳐한 공간 모델을 이미지로 변환해 사진·텍스트와 함께 나만의 공간 기록 작성
+    - Maps 연동으로 공간의 위치를 함께 저장하고 공유
+
+    ## 기술 노트
+
+    - RoomPlan의 스캔 제약(최대 5분, 9m×9m, 직육면체 인식)을 고려해
+      캡쳐된 모델을 이미지 기반 기록으로 활용하는 방식을 채택했습니다.

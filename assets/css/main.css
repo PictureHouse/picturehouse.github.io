@@ -143,10 +143,12 @@ img { max-width: 100%; }
 .miniapps-header p { color: var(--text-muted); margin: 0; }
 
 .keyboard {
+  --kb-gap: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  align-items: center;
+  gap: var(--kb-gap);
+  max-width: 760px;
+  margin: 0 auto;
   padding: 28px 16px;
   background: #e6e6ea;
   border-radius: 20px;
@@ -155,18 +157,16 @@ img { max-width: 100%; }
 
 .kb-row {
   display: flex;
-  gap: 10px;
+  gap: var(--kb-gap);
   justify-content: center;
+  width: 100%;
 }
-
-/* 실제 키보드처럼 행마다 살짝 어긋나게 */
-.kb-row--2 { padding-left: 3%; }
-.kb-row--3 { padding-left: 8%; }
 
 .key {
   position: relative;
-  width: clamp(40px, 8vw, 72px);
-  height: clamp(40px, 8vw, 72px);
+  /* 첫 줄(10키) 기준으로 키 폭을 잡아 모든 줄의 키 크기를 통일 */
+  width: calc((100% - 9 * var(--kb-gap)) / 10);
+  aspect-ratio: 1;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -314,8 +314,7 @@ img { max-width: 100%; }
 
 /* ===== Responsive ===== */
 @media (max-width: 640px) {
-  .kb-row { gap: 6px; }
-  .keyboard { gap: 6px; padding: 16px 8px; border-radius: 14px; }
+  .keyboard { --kb-gap: 5px; padding: 14px 8px; border-radius: 14px; }
   .key { border-radius: 8px; }
   .home-hero { padding: 48px 0 24px; }
   .home-hero h1 { font-size: 1.8rem; }

@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "jekyll",
+      "runtimeExecutable": "env",
+      "runtimeArgs": [
+        "JEKYLL_NO_BUNDLER_REQUIRE=true",
+        "/Users/yunecho/.gem/ruby/2.6.0/bin/jekyll",
+        "serve",
+        "--port",
+        "4000"
+      ],
+      "port": 4000
+    }
+  ]
+}

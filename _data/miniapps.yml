@@ -15,4 +15,17 @@
   tagline: 샘플 미니앱입니다
   icon: /assets/icons/mini/a.svg
   store_url: "#"
-  description: 팝업에 표시되는 앱 소개 문단입니다. miniapps.yml의 description 항목을 수정하면 이 내용이 바뀝니다.
+  privacy: sample-a
+  # screenshots:
+  #   - /assets/icons/mini/a-shot-1.png
+  description: |
+    ## 소개
+
+    팝업에 표시되는 앱 소개입니다. 마크다운으로 자유롭게 작성할 수 있고,
+    miniapps.yml의 description 항목을 수정하면 이 내용이 바뀝니다.
+
+    ## 주요 기능
+
+    - 기능 1에 대한 설명
+    - 기능 2에 대한 설명
+    - 기능 3에 대한 설명

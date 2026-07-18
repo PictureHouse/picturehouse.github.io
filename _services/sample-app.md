@@ -2,7 +2,7 @@
 name: Sample App
 tab: Sample App        # 탭에 표시될 이름 (생략 시 name 사용)
 order: 1               # 탭 정렬 순서
-tagline: 큰 앱 랜딩 페이지 샘플입니다
+tagline: 서비스 랜딩 페이지 샘플입니다
 icon: /assets/icons/big/sample-app.svg
 # appstore_url: https://apps.apple.com/...
 # playstore_url: https://play.google.com/...

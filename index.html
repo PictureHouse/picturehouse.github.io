@@ -1,11 +1,11 @@
 ---
-title: Home
+title: Info
 permalink: /
 ---
 <section class="home-hero">
   <div class="container">
     <p class="eyebrow">Picturehouse — Yune Cho</p>
-    <h1 class="display">iOS Developer<br><em>Based in Seoul</em></h1>
+    <h1 class="display">Software Engineer<br><em>Based in Seoul</em></h1>
     <p class="home-tagline">사용자의 일상에 스며드는 앱을 만듭니다.<br>알파벳 하나에 미니앱 하나, 그리고 조금 더 큰 앱들.</p>
     <div class="social-links">
       <a class="social-btn" href="https://github.com/PictureHouse" target="_blank" rel="noopener">
@@ -57,25 +57,5 @@ permalink: /
         <span class="resume-role">Computer Science &amp; Engineering</span>
       </li>
     </ul>
-  </div>
-</section>
-
-<section class="container home-projects">
-  <h2 class="resume-title">Projects</h2>
-  <div class="home-sections">
-    <a class="home-card" href="{{ '/mini-apps/' | relative_url }}">
-      <h2>My Mini Apps</h2>
-      <p>알파벳별로 만들어가는 미니앱 컬렉션을 키보드에서 확인해보세요.</p>
-      {% assign active = site.data.miniapps | size %}
-      <p class="home-card-meta">{{ active }} / 26 keys</p>
-    </a>
-
-    {% assign bigapps = site.bigapps | sort: 'order' %}
-    {% for app in bigapps %}
-    <a class="home-card" href="{{ app.url | relative_url }}">
-      <h2>{{ app.name }}</h2>
-      <p>{{ app.tagline }}</p>
-    </a>
-    {% endfor %}
   </div>
 </section>

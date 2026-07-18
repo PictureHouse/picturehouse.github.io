@@ -15,10 +15,10 @@
     <div class="container header-inner">
       <a class="site-logo" href="{{ '/' | relative_url }}">{{ site.title }}</a>
       <nav class="tabs" aria-label="주요 메뉴">
-        <a class="tab {% if page.url == '/' %}tab--active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+        <a class="tab {% if page.url == '/' %}tab--active{% endif %}" href="{{ '/' | relative_url }}">Info</a>
         <a class="tab {% if page.url contains '/mini-apps' %}tab--active{% endif %}" href="{{ '/mini-apps/' | relative_url }}">My Mini Apps</a>
-        {% assign bigapps = site.bigapps | sort: 'order' %}
-        {% for app in bigapps %}
+        {% assign services = site.services | sort: 'order' %}
+        {% for app in services %}
         <a class="tab {% if page.url == app.url %}tab--active{% endif %}" href="{{ app.url | relative_url }}">{{ app.tab | default: app.name }}</a>
         {% endfor %}
       </nav>

@@ -4,13 +4,13 @@ url: "https://picturehouse.github.io"
 baseurl: ""
 lang: ko
 
-# 큰 앱(빅앱)과 개인정보처리방침은 컬렉션으로 관리합니다.
-# _bigapps/앱이름.md → /apps/앱이름/
+# 서비스(미니앱이 아닌 앱)와 개인정보처리방침은 컬렉션으로 관리합니다.
+# _services/앱이름.md → /services/앱이름/
 # _privacy/앱이름.md → /privacy/앱이름/
 collections:
-  bigapps:
+  services:
     output: true
-    permalink: /apps/:name/
+    permalink: /services/:name/
   privacy:
     output: true
     permalink: /privacy/:name/
@@ -18,9 +18,9 @@ collections:
 defaults:
   - scope:
       path: ""
-      type: bigapps
+      type: services
     values:
-      layout: bigapp
+      layout: service
   - scope:
       path: ""
       type: privacy

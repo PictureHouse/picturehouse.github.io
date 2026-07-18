@@ -7,10 +7,10 @@ Jekyll 기반 개인 프로젝트 소개 사이트. GitHub Pages가 자동으로
 | 경로 | 역할 |
 |---|---|
 | `_data/miniapps.yml` | 미니앱 목록 → `/mini-apps/` 키보드 UI에 반영 |
-| `_bigapps/*.md` | 큰 앱 랜딩 페이지 (파일당 앱 1개, 상단 탭 자동 생성) |
+| `_services/*.md` | 서비스(미니앱이 아닌 앱) 랜딩 페이지 (파일당 앱 1개, 상단 탭 자동 생성) |
 | `_privacy/*.md` | 개인정보처리방침 (파일당 앱 1개) |
 | `assets/icons/mini/` | 미니앱 아이콘 |
-| `assets/icons/big/` | 큰 앱 아이콘·스크린샷 |
+| `assets/icons/big/` | 서비스 아이콘·스크린샷 |
 
 ## 콘텐츠 추가 방법
 
@@ -28,9 +28,9 @@ Jekyll 기반 개인 프로젝트 소개 사이트. GitHub Pages가 자동으로
   privacy: bloom            # 방침이 있으면 _privacy/bloom.md 생성 후 지정
 ```
 
-### 새 큰 앱(탭) 추가
+### 새 서비스(탭) 추가
 
-`_bigapps/앱이름.md` 생성 — front matter에 `name`, `order`(탭 순서), `tagline`, `icon`, 스토어 링크, `screenshots` 목록을 적고, 본문에는 마크다운으로 소개를 작성합니다. 탭은 자동으로 추가됩니다.
+`_services/앱이름.md` 생성 — front matter에 `name`, `order`(탭 순서), `tagline`, `icon`, 스토어 링크, `screenshots` 목록을 적고, 본문에는 마크다운으로 소개를 작성합니다. 탭은 자동으로 추가됩니다.
 
 ### 개인정보처리방침 추가/개정
 

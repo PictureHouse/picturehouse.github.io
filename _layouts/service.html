@@ -1,8 +1,8 @@
 ---
 layout: default
 ---
-<article class="bigapp">
-  <section class="bigapp-hero">
+<article class="service">
+  <section class="service-hero">
     <div class="container hero-inner">
       {% if page.icon %}<img class="hero-icon" src="{{ page.icon | relative_url }}" alt="{{ page.name }} 아이콘">{% endif %}
       <h1>{{ page.name }}</h1>
@@ -16,14 +16,14 @@ layout: default
   </section>
 
   {% if page.screenshots %}
-  <section class="container bigapp-screens">
+  <section class="container service-screens">
     {% for shot in page.screenshots %}
     <img src="{{ shot | relative_url }}" alt="{{ page.name }} 스크린샷 {{ forloop.index }}">
     {% endfor %}
   </section>
   {% endif %}
 
-  <section class="container bigapp-body prose">
+  <section class="container service-body prose">
     {{ content }}
   </section>
 </article>

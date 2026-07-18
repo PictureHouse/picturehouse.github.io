@@ -62,9 +62,16 @@ permalink: /mini-apps/
         {% if app.privacy %}<a class="btn btn--ghost" href="{{ '/privacy/' | append: app.privacy | append: '/' | relative_url }}">개인정보처리방침</a>{% endif %}
       </div>
     </div>
+    {% if app.screenshots %}
+    <div class="miniapp-modal__screens">
+      {% for shot in app.screenshots %}
+      <img src="{{ shot | relative_url }}" alt="{{ app.name }} 스크린샷 {{ forloop.index }}">
+      {% endfor %}
+    </div>
+    {% endif %}
     {% if app.description %}
-    <div class="miniapp-modal__body">
-      <p>{{ app.description }}</p>
+    <div class="miniapp-modal__body prose">
+      {{ app.description | markdownify }}
     </div>
     {% endif %}
   </section>

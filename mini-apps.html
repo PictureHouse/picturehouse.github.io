@@ -4,7 +4,8 @@ permalink: /mini-apps/
 ---
 <section class="container miniapps">
   <header class="miniapps-header">
-    <h1>My Mini Apps</h1>
+    <p class="eyebrow">A to Z, One at a Time</p>
+    <h1 class="display">My <em>Mini Apps</em></h1>
     <p>알파벳 하나마다 미니앱을 하나씩 만들고 있어요. 채워진 키를 눌러보세요.</p>
   </header>
 
@@ -12,6 +13,7 @@ permalink: /mini-apps/
     {% assign rows = "qwertyuiop,asdfghjkl,zxcvbnm" | split: "," %}
     {% for row in rows %}
     <div class="kb-row kb-row--{{ forloop.index }}">
+      {% if forloop.index == 3 %}<div class="key key--deco key--wide"><span class="key-label">shift</span></div>{% endif %}
       {% assign letters = row | split: "" %}
       {% for letter in letters %}
         {% assign app = site.data.miniapps | where: "letter", letter | first %}
@@ -28,8 +30,18 @@ permalink: /mini-apps/
         </div>
         {% endif %}
       {% endfor %}
+      {% if forloop.index == 3 %}<div class="key key--deco key--wide"><span class="key-label">shift</span></div>{% endif %}
     </div>
     {% endfor %}
+    <div class="kb-row kb-row--bottom">
+      <div class="key key--deco"><span class="key-label">fn</span></div>
+      <div class="key key--deco"><span class="key-label">ctrl</span></div>
+      <div class="key key--deco"><span class="key-label">opt</span></div>
+      <div class="key key--deco key--cmd"><span class="key-label">cmd</span></div>
+      <div class="key key--deco key--space"><span class="key-label">picturehouse</span></div>
+      <div class="key key--deco key--cmd"><span class="key-label">cmd</span></div>
+      <div class="key key--deco"><span class="key-label">opt</span></div>
+    </div>
   </div>
 
   <p class="miniapps-note">비어 있는 키는 아직 만들지 않은 알파벳이에요. 하나씩 채워갑니다.</p>

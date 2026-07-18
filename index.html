@@ -1,0 +1,27 @@
+---
+title: Home
+permalink: /
+---
+<section class="home-hero">
+  <div class="container">
+    <h1>{{ site.title }}</h1>
+    <p class="home-tagline">알파벳 하나에 미니앱 하나, 그리고 조금 더 큰 앱들.</p>
+  </div>
+</section>
+
+<section class="container home-sections">
+  <a class="home-card" href="{{ '/mini-apps/' | relative_url }}">
+    <h2>My Mini Apps</h2>
+    <p>알파벳별로 만들어가는 미니앱 컬렉션을 키보드에서 확인해보세요.</p>
+    {% assign active = site.data.miniapps | size %}
+    <p class="home-card-meta">{{ active }} / 26 keys</p>
+  </a>
+
+  {% assign bigapps = site.bigapps | sort: 'order' %}
+  {% for app in bigapps %}
+  <a class="home-card" href="{{ app.url | relative_url }}">
+    <h2>{{ app.name }}</h2>
+    <p>{{ app.tagline }}</p>
+  </a>
+  {% endfor %}
+</section>

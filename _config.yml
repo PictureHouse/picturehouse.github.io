@@ -1,0 +1,37 @@
+title: Picturehouse
+description: Apps by Picturehouse — mini apps and more.
+url: "https://picturehouse.github.io"
+baseurl: ""
+lang: ko
+
+# 큰 앱(빅앱)과 개인정보처리방침은 컬렉션으로 관리합니다.
+# _bigapps/앱이름.md → /apps/앱이름/
+# _privacy/앱이름.md → /privacy/앱이름/
+collections:
+  bigapps:
+    output: true
+    permalink: /apps/:name/
+  privacy:
+    output: true
+    permalink: /privacy/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: bigapps
+    values:
+      layout: bigapp
+  - scope:
+      path: ""
+      type: privacy
+    values:
+      layout: privacy
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

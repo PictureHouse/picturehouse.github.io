@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<article class="container privacy prose">
+  <header class="privacy-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.app_name %}<p class="privacy-app">적용 서비스: {{ page.app_name }}</p>{% endif %}
+    {% if page.updated %}<p class="privacy-updated">최종 개정일: {{ page.updated }}</p>{% endif %}
+  </header>
+  {{ content }}
+</article>

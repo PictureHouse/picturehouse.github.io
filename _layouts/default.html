@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ko' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <nav class="tabs" aria-label="주요 메뉴">
+        <a class="tab {% if page.url == '/' %}tab--active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+        <a class="tab {% if page.url contains '/mini-apps' %}tab--active{% endif %}" href="{{ '/mini-apps/' | relative_url }}">My Mini Apps</a>
+        {% assign bigapps = site.bigapps | sort: 'order' %}
+        {% for app in bigapps %}
+        <a class="tab {% if page.url == app.url %}tab--active{% endif %}" href="{{ app.url | relative_url }}">{{ app.tab | default: app.name }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© {{ site.time | date: '%Y' }} {{ site.title }} · <a href="mailto:choyune@gmail.com">Contact</a></p>
+    </div>
+  </footer>
+</body>
+</html>

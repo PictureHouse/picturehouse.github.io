@@ -1,0 +1,36 @@
+---
+title: My Mini Apps
+permalink: /mini-apps/
+---
+<section class="container miniapps">
+  <header class="miniapps-header">
+    <h1>My Mini Apps</h1>
+    <p>알파벳 하나마다 미니앱을 하나씩 만들고 있어요. 채워진 키를 눌러보세요.</p>
+  </header>
+
+  <div class="keyboard" role="list">
+    {% assign rows = "qwertyuiop,asdfghjkl,zxcvbnm" | split: "," %}
+    {% for row in rows %}
+    <div class="kb-row kb-row--{{ forloop.index }}">
+      {% assign letters = row | split: "" %}
+      {% for letter in letters %}
+        {% assign app = site.data.miniapps | where: "letter", letter | first %}
+        {% if app %}
+        <a role="listitem" class="key key--active" href="{{ app.store_url | default: '#' }}"
+           {% if app.store_url and app.store_url != '#' %}target="_blank" rel="noopener"{% endif %}
+           aria-label="{{ app.name }}">
+          <img class="key-icon" src="{{ app.icon | relative_url }}" alt="">
+          <span class="key-tooltip">{{ app.name }}{% if app.tagline %} — {{ app.tagline }}{% endif %}</span>
+        </a>
+        {% else %}
+        <div role="listitem" class="key key--disabled" aria-label="{{ letter | upcase }} — 준비 중">
+          <span class="key-letter">{{ letter | upcase }}</span>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <p class="miniapps-note">비어 있는 키는 아직 만들지 않은 알파벳이에요. 하나씩 채워갑니다.</p>
+</section>

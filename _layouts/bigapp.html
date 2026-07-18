@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<article class="bigapp">
+  <section class="bigapp-hero">
+    <div class="container hero-inner">
+      {% if page.icon %}<img class="hero-icon" src="{{ page.icon | relative_url }}" alt="{{ page.name }} 아이콘">{% endif %}
+      <h1>{{ page.name }}</h1>
+      {% if page.tagline %}<p class="hero-tagline">{{ page.tagline }}</p>{% endif %}
+      <div class="hero-actions">
+        {% if page.appstore_url %}<a class="btn btn--primary" href="{{ page.appstore_url }}">App Store</a>{% endif %}
+        {% if page.playstore_url %}<a class="btn btn--primary" href="{{ page.playstore_url }}">Google Play</a>{% endif %}
+        {% if page.privacy %}<a class="btn btn--ghost" href="{{ '/privacy/' | append: page.privacy | append: '/' | relative_url }}">개인정보처리방침</a>{% endif %}
+      </div>
+    </div>
+  </section>
+
+  {% if page.screenshots %}
+  <section class="container bigapp-screens">
+    {% for shot in page.screenshots %}
+    <img src="{{ shot | relative_url }}" alt="{{ page.name }} 스크린샷 {{ forloop.index }}">
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <section class="container bigapp-body prose">
+    {{ content }}
+  </section>
+</article>

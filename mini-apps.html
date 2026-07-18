@@ -18,14 +18,13 @@ permalink: /mini-apps/
       {% for letter in letters %}
         {% assign app = site.data.miniapps | where: "letter", letter | first %}
         {% if app %}
-        <a role="listitem" class="key key--active" href="{{ app.store_url | default: '#' }}"
-           {% if app.store_url and app.store_url != '#' %}target="_blank" rel="noopener"{% endif %}
-           aria-label="{{ app.name }}">
+        <button type="button" role="listitem" class="key key--active" data-letter="{{ letter }}"
+                aria-haspopup="dialog" aria-label="{{ app.name }}">
           <img class="key-icon" src="{{ app.icon | relative_url }}" alt="">
           <span class="key-tooltip">{{ app.name }}{% if app.tagline %} — {{ app.tagline }}{% endif %}</span>
-        </a>
+        </button>
         {% else %}
-        <div role="listitem" class="key key--disabled" aria-label="{{ letter | upcase }} — 준비 중">
+        <div role="listitem" class="key key--disabled" data-letter="{{ letter }}" aria-label="{{ letter | upcase }} — 준비 중">
           <span class="key-letter">{{ letter | upcase }}</span>
         </div>
         {% endif %}
@@ -46,3 +45,30 @@ permalink: /mini-apps/
 
   <p class="miniapps-note">비어 있는 키는 아직 만들지 않은 알파벳이에요. 하나씩 채워갑니다.</p>
 </section>
+
+<!-- 미니앱 소개 팝업 -->
+<div class="miniapp-modal" id="miniapp-modal" hidden>
+  <div class="miniapp-modal__backdrop" data-close></div>
+  {% for app in site.data.miniapps %}
+  <section class="miniapp-modal__card" data-modal-letter="{{ app.letter }}" role="dialog" aria-modal="true" aria-label="{{ app.name }}" hidden>
+    <button type="button" class="miniapp-modal__close" data-close aria-label="닫기">&times;</button>
+    <div class="miniapp-modal__hero">
+      <img class="miniapp-modal__icon" src="{{ app.icon | relative_url }}" alt="">
+      <p class="eyebrow">Mini App — {{ app.letter | upcase }}</p>
+      <h2 class="miniapp-modal__name">{{ app.name }}</h2>
+      {% if app.tagline %}<p class="miniapp-modal__tagline">{{ app.tagline }}</p>{% endif %}
+      <div class="hero-actions">
+        {% if app.store_url and app.store_url != '#' %}<a class="btn btn--primary" href="{{ app.store_url }}" target="_blank" rel="noopener">App Store</a>{% endif %}
+        {% if app.privacy %}<a class="btn btn--ghost" href="{{ '/privacy/' | append: app.privacy | append: '/' | relative_url }}">개인정보처리방침</a>{% endif %}
+      </div>
+    </div>
+    {% if app.description %}
+    <div class="miniapp-modal__body">
+      <p>{{ app.description }}</p>
+    </div>
+    {% endif %}
+  </section>
+  {% endfor %}
+</div>
+
+<script src="{{ '/assets/js/miniapps.js' | relative_url }}" defer></script>

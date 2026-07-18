@@ -4,25 +4,78 @@ permalink: /
 ---
 <section class="home-hero">
   <div class="container">
-    <p class="eyebrow">Picturehouse — Apps &amp; Experiments</p>
-    <h1 class="display">Where Ideas<br><em>Take Shape</em></h1>
-    <p class="home-tagline">알파벳 하나에 미니앱 하나, 그리고 조금 더 큰 앱들.</p>
+    <p class="eyebrow">Picturehouse — Yune Cho</p>
+    <h1 class="display">iOS Developer<br><em>Based in Seoul</em></h1>
+    <p class="home-tagline">사용자의 일상에 스며드는 앱을 만듭니다.<br>알파벳 하나에 미니앱 하나, 그리고 조금 더 큰 앱들.</p>
+    <div class="social-links">
+      <a class="social-btn" href="https://github.com/PictureHouse" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <a class="social-btn" href="https://www.linkedin.com/in/choyune/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M13.63 13.63h-2.37V9.92c0-.89-.02-2.03-1.24-2.03-1.24 0-1.43.97-1.43 1.96v3.78H6.22V6h2.28v1.04h.03c.32-.6 1.09-1.24 2.25-1.24 2.4 0 2.85 1.58 2.85 3.64v4.19ZM3.54 4.96a1.38 1.38 0 1 1 0-2.75 1.38 1.38 0 0 1 0 2.75ZM4.73 13.63H2.36V6h2.37v7.63ZM14.82 0H1.18C.53 0 0 .52 0 1.16v13.68C0 15.48.53 16 1.18 16h13.64c.65 0 1.18-.52 1.18-1.16V1.16C16 .52 15.47 0 14.82 0Z"/></svg>
+        <span>LinkedIn</span>
+      </a>
+    </div>
   </div>
 </section>
 
-<section class="container home-sections">
-  <a class="home-card" href="{{ '/mini-apps/' | relative_url }}">
-    <h2>My Mini Apps</h2>
-    <p>알파벳별로 만들어가는 미니앱 컬렉션을 키보드에서 확인해보세요.</p>
-    {% assign active = site.data.miniapps | size %}
-    <p class="home-card-meta">{{ active }} / 26 keys</p>
-  </a>
+<section class="container resume">
+  <div class="resume-col">
+    <h2 class="resume-title">Experience</h2>
+    <ul class="resume-list">
+      <li>
+        <span class="resume-period">2026.01 — 현재</span>
+        <span class="resume-role"><a href="https://www.dbinc.co.kr/" target="_blank" rel="noopener">DB Inc.</a> · Software Engineer</span>
+      </li>
+      <li>
+        <span class="resume-period">2024.09 — 2025.05</span>
+        <span class="resume-role"><a href="https://linktr.ee/hmhz" target="_blank" rel="noopener">HMHZ studio</a> · iOS Developer</span>
+      </li>
+      <li>
+        <span class="resume-period">2024.03 — 2024.12</span>
+        <span class="resume-role"><a href="https://developeracademy.postech.ac.kr/" target="_blank" rel="noopener">Apple Developer Academy @ POSTECH</a> · 3rd Junior Learner, iOS Developer</span>
+      </li>
+      <li>
+        <span class="resume-period">2023.07 — 2023.12</span>
+        <span class="resume-role"><a href="https://estsoft.ai/" target="_blank" rel="noopener">ESTsoft</a> · Software Test Engineer Intern</span>
+      </li>
+    </ul>
+  </div>
+  <div class="resume-col">
+    <h2 class="resume-title">Award</h2>
+    <ul class="resume-list">
+      <li>
+        <span class="resume-period">WWDC25</span>
+        <span class="resume-role">Swift Student Challenge Winner · <a href="https://apps.apple.com/kr/app/neckle/id6742444201" target="_blank" rel="noopener">Neckle</a></span>
+      </li>
+    </ul>
+    <h2 class="resume-title">Education</h2>
+    <ul class="resume-list">
+      <li>
+        <span class="resume-period">Hanyang Univ.</span>
+        <span class="resume-role">Computer Science &amp; Engineering</span>
+      </li>
+    </ul>
+  </div>
+</section>
 
-  {% assign bigapps = site.bigapps | sort: 'order' %}
-  {% for app in bigapps %}
-  <a class="home-card" href="{{ app.url | relative_url }}">
-    <h2>{{ app.name }}</h2>
-    <p>{{ app.tagline }}</p>
-  </a>
-  {% endfor %}
+<section class="container home-projects">
+  <h2 class="resume-title">Projects</h2>
+  <div class="home-sections">
+    <a class="home-card" href="{{ '/mini-apps/' | relative_url }}">
+      <h2>My Mini Apps</h2>
+      <p>알파벳별로 만들어가는 미니앱 컬렉션을 키보드에서 확인해보세요.</p>
+      {% assign active = site.data.miniapps | size %}
+      <p class="home-card-meta">{{ active }} / 26 keys</p>
+    </a>
+
+    {% assign bigapps = site.bigapps | sort: 'order' %}
+    {% for app in bigapps %}
+    <a class="home-card" href="{{ app.url | relative_url }}">
+      <h2>{{ app.name }}</h2>
+      <p>{{ app.tagline }}</p>
+    </a>
+    {% endfor %}
+  </div>
 </section>

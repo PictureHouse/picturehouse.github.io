@@ -19,7 +19,7 @@
 - letter: r
   name: MyRaum
   tagline: RoomPlan으로 공간을 기록하고 공유하는 앱
-  icon: /assets/icons/mini/r.svg
+  icon: /assets/icons/mini/r.png
   github_url: https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M15-RoomPlan
   description: |
     ## 소개

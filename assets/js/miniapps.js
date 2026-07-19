@@ -43,6 +43,10 @@
   document.addEventListener('keydown', function (e) {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
 
+    // 2048 게임이 열려 있으면 게임 쪽에서 키를 처리
+    var gameModal = document.getElementById('game-modal');
+    if (gameModal && !gameModal.hidden) return;
+
     if (e.key === 'Escape' && openLetter) {
       close();
       return;

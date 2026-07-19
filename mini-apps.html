@@ -13,7 +13,7 @@ permalink: /mini-apps/
     {% assign rows = "qwertyuiop,asdfghjkl,zxcvbnm" | split: "," %}
     {% for row in rows %}
     <div class="kb-row kb-row--{{ forloop.index }}">
-      {% if forloop.index == 3 %}<div class="key key--deco key--wide"><span class="key-label">shift</span></div>{% endif %}
+      {% if forloop.index == 3 %}<button type="button" class="key key--deco key--wide key--egg" data-easter="2048" aria-haspopup="dialog" aria-label="2048 게임"><span class="key-label">shift</span></button>{% endif %}
       {% assign letters = row | split: "" %}
       {% for letter in letters %}
         {% assign app = site.data.miniapps | where: "letter", letter | first %}
@@ -33,11 +33,10 @@ permalink: /mini-apps/
     </div>
     {% endfor %}
     <div class="kb-row kb-row--bottom">
-      <div class="key key--deco"><span class="key-label">fn</span></div>
       <div class="key key--deco"><span class="key-label">ctrl</span></div>
       <div class="key key--deco"><span class="key-label">opt</span></div>
       <div class="key key--deco key--cmd"><span class="key-label">cmd</span></div>
-      <div class="key key--deco key--space"><span class="key-label">picturehouse</span></div>
+      <a class="key key--deco key--space key--egg" href="{{ '/' | relative_url }}" aria-label="Info 탭으로 이동"><span class="key-label">picturehouse</span></a>
       <div class="key key--deco key--cmd"><span class="key-label">cmd</span></div>
       <div class="key key--deco"><span class="key-label">opt</span></div>
     </div>
@@ -79,4 +78,24 @@ permalink: /mini-apps/
   {% endfor %}
 </div>
 
+<!-- 이스터에그: 2048 -->
+<div class="miniapp-modal" id="game-modal" hidden>
+  <div class="miniapp-modal__backdrop" data-close></div>
+  <section class="miniapp-modal__card game-card" role="dialog" aria-modal="true" aria-label="2048 게임">
+    <button type="button" class="miniapp-modal__close game-modal__close" data-close aria-label="닫기">&times;</button>
+    <div class="game-head">
+      <p class="eyebrow">Easter Egg</p>
+      <h2 class="game-title">2048</h2>
+      <p class="game-sub">방향키 또는 스와이프로 타일을 합쳐 2048을 만들어보세요.</p>
+      <div class="game-meta">
+        <span class="game-score-label">Score <b id="game-score">0</b></span>
+        <button type="button" id="game-restart" class="btn btn--dark">다시 시작</button>
+      </div>
+    </div>
+    <div class="game-board" id="game-board" aria-live="polite"></div>
+    <p class="game-status" id="game-status" hidden></p>
+  </section>
+</div>
+
 <script src="{{ '/assets/js/miniapps.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/game2048.js' | relative_url }}" defer></script>

@@ -388,6 +388,127 @@ button.key { cursor: pointer; }
   margin-top: 40px;
 }
 
+/* 클릭 가능한 장식 키(이스터에그) */
+.key--egg {
+  cursor: pointer;
+  transition: transform 0.07s ease, box-shadow 0.07s ease;
+}
+
+.key--egg:hover {
+  transform: translateY(1px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.14) inset,
+    0 -3px 4px rgba(0, 0, 0, 0.3) inset,
+    0 2px 0 #121110,
+    0 4px 5px rgba(0, 0, 0, 0.4);
+}
+
+.key--egg:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 -2px 3px rgba(0, 0, 0, 0.3) inset,
+    0 0 0 #121110,
+    0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== 2048 game ===== */
+.game-card { width: min(460px, 100%); }
+
+.game-head {
+  padding: 48px 32px 24px;
+  text-align: center;
+}
+
+.game-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.game-sub {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0 0 20px;
+}
+
+.game-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.game-score-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.game-score-label b { color: var(--ink); font-size: 0.9rem; margin-left: 4px; }
+
+.btn--dark {
+  background: var(--ink);
+  color: var(--bg);
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn--dark:hover { opacity: 0.85; }
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: min(340px, calc(100% - 48px));
+  aspect-ratio: 1;
+  margin: 0 auto 20px;
+  padding: 10px;
+  background: var(--dark);
+  border-radius: 14px;
+  touch-action: none;
+}
+
+.game-cell {
+  border-radius: 8px;
+  background: rgba(242, 240, 234, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+
+.game-cell[data-len="3"] { font-size: 1.15rem; }
+.game-cell[data-len="4"] { font-size: 0.95rem; }
+
+.game-cell--v2 { background: #f4f1e8; }
+.game-cell--v4 { background: #ece3cd; }
+.game-cell--v8 { background: #eecf94; }
+.game-cell--v16 { background: #e7b45f; }
+.game-cell--v32 { background: #de9a41; color: #fff; }
+.game-cell--v64 { background: #d47f2c; color: #fff; }
+.game-cell--v128 { background: #c9a53c; color: #fff; }
+.game-cell--v256 { background: #c19a2b; color: #fff; }
+.game-cell--v512 { background: #b78d1e; color: #fff; }
+.game-cell--v1024 { background: #a67c10; color: #fff; }
+.game-cell--v2048 { background: #1b1a18; color: #eecf94; }
+
+.game-status {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0;
+  padding-bottom: 12px;
+}
+
+.game-card { padding-bottom: 24px; }
+
 /* ===== Mini App Modal ===== */
 .miniapp-modal[hidden] { display: none; }
 

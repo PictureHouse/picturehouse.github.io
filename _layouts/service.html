@@ -8,8 +8,8 @@ layout: default
       <h1>{{ page.name }}</h1>
       {% if page.tagline %}<p class="hero-tagline">{{ page.tagline }}</p>{% endif %}
       <div class="hero-actions">
-        {% if page.appstore_url %}<a class="btn btn--primary" href="{{ page.appstore_url }}">App Store</a>{% endif %}
-        {% if page.playstore_url %}<a class="btn btn--primary" href="{{ page.playstore_url }}">Google Play</a>{% endif %}
+        {% if page.appstore_url %}<a class="btn btn--primary" href="{{ page.appstore_url }}" target="_blank" rel="noopener">App Store</a>{% endif %}
+        {% if page.playstore_url %}<a class="btn btn--primary" href="{{ page.playstore_url }}" target="_blank" rel="noopener">Google Play</a>{% endif %}
         {% if page.github_url %}<a class="btn btn--primary" href="{{ page.github_url }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
         {% if page.privacy %}<a class="btn btn--ghost" href="{{ '/privacy/' | append: page.privacy | append: '/' | relative_url }}">개인정보처리방침</a>{% endif %}
       </div>

@@ -24,9 +24,18 @@ permalink: /mini-apps/
           <span class="key-tooltip">{{ app.name }}{% if app.tagline %} — {{ app.tagline }}{% endif %}</span>
         </button>
         {% else %}
+        {% assign soon = site.static_files | where_exp: "f", "f.basename == letter" | where_exp: "f", "f.path contains '/assets/icons/mini/'" | first %}
+        {% if soon %}
+        <button type="button" role="listitem" class="key key--active" data-letter="{{ letter }}"
+                aria-haspopup="dialog" aria-label="{{ letter | upcase }} — Coming Soon">
+          <img class="key-icon" src="{{ soon.path | relative_url }}" alt="">
+          <span class="key-tooltip">Coming Soon...</span>
+        </button>
+        {% else %}
         <div role="listitem" class="key key--disabled" data-letter="{{ letter }}" aria-label="{{ letter | upcase }} — 준비 중">
           <span class="key-letter">{{ letter | upcase }}</span>
         </div>
+        {% endif %}
         {% endif %}
       {% endfor %}
       {% if forloop.index == 3 %}<div class="key key--deco key--wide" data-phys="ShiftRight"><span class="key-label">shift</span></div>{% endif %}
@@ -75,6 +84,24 @@ permalink: /mini-apps/
     </div>
     {% endif %}
   </section>
+  {% endfor %}
+  {% comment %} 아이콘만 있고 앱 정보가 없는 알파벳 → Coming Soon 팝업 {% endcomment %}
+  {% for file in site.static_files %}
+  {% if file.path contains '/assets/icons/mini/' %}
+  {% assign registered = site.data.miniapps | where: "letter", file.basename | first %}
+  {% assign len = file.basename | size %}
+  {% if registered == nil and len == 1 %}
+  <section class="miniapp-modal__card" data-modal-letter="{{ file.basename }}" role="dialog" aria-modal="true" aria-label="Coming Soon" hidden>
+    <button type="button" class="miniapp-modal__close" data-close aria-label="닫기">&times;</button>
+    <div class="miniapp-modal__hero">
+      <img class="miniapp-modal__icon" src="{{ file.path | relative_url }}" alt="">
+      <p class="eyebrow">Mini App — {{ file.basename | upcase }}</p>
+      <h2 class="miniapp-modal__name">Coming Soon...</h2>
+      <p class="miniapp-modal__tagline">새로운 미니앱을 준비하고 있어요. 조금만 기다려주세요.</p>
+    </div>
+  </section>
+  {% endif %}
+  {% endif %}
   {% endfor %}
 </div>
 

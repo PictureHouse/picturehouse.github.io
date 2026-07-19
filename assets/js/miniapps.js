@@ -65,6 +65,13 @@
     }
   }
 
+  // 물리 키 위치(e.code) 기준 알파벳 판별 — 한글 등 다른 자판에서도 동작
+  function letterOf(e) {
+    if (/^Key[A-Z]$/.test(e.code)) return e.code.charAt(3).toLowerCase();
+    if (/^[a-zA-Z]$/.test(e.key)) return e.key.toLowerCase();
+    return '';
+  }
+
   // 실제 키보드 입력: 화면의 키캡을 누르는 효과 + 키별 동작
   document.addEventListener('keydown', function (e) {
     // 화면 키캡 눌림 효과 (수식키 포함)
@@ -99,8 +106,8 @@
       return;
     }
 
-    var letter = e.key.toLowerCase();
-    if (!/^[a-z]$/.test(letter)) return;
+    var letter = letterOf(e);
+    if (!letter) return;
 
     var key = document.querySelector('.key[data-letter="' + letter + '"]');
     if (key) key.classList.add('is-pressed');
@@ -114,8 +121,8 @@
     var phys = physKey(codeOf(e));
     if (phys) phys.classList.remove('is-pressed');
 
-    var letter = e.key.toLowerCase();
-    if (!/^[a-z]$/.test(letter)) return;
+    var letter = letterOf(e);
+    if (!letter) return;
     var key = document.querySelector('.key[data-letter="' + letter + '"]');
     if (key) key.classList.remove('is-pressed');
   });

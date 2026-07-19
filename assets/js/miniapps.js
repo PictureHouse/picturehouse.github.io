@@ -39,16 +39,63 @@
     if (e.target.closest('[data-close]')) close();
   });
 
-  // 실제 키보드 입력: 알파벳이면 키캡을 누르는 효과 + 앱이 있으면 팝업
+  function physKey(code) {
+    return document.querySelector('.key[data-phys="' + code + '"]');
+  }
+
+  // e.code가 비어 있는 환경(합성 이벤트 등)을 위해 key/keyCode/location으로 보정
+  function codeOf(e) {
+    if (e.code) return e.code;
+    var side = e.location === 2 ? 'Right' : 'Left';
+    switch (e.key) {
+      case 'Shift': return 'Shift' + side;
+      case 'Control': return 'Control' + side;
+      case 'Alt': return 'Alt' + side;
+      case 'Meta': return 'Meta' + side;
+      case ' ': return 'Space';
+    }
+    switch (e.keyCode) {
+      case 32: return 'Space';
+      case 16: return 'Shift' + side;
+      case 17: return 'Control' + side;
+      case 18: return 'Alt' + side;
+      case 91: return 'MetaLeft';
+      case 93: return 'MetaRight';
+      default: return '';
+    }
+  }
+
+  // 실제 키보드 입력: 화면의 키캡을 누르는 효과 + 키별 동작
   document.addEventListener('keydown', function (e) {
-    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    // 화면 키캡 눌림 효과 (수식키 포함)
+    var code = codeOf(e);
+    var phys = physKey(code);
+    if (phys) phys.classList.add('is-pressed');
+
+    var gameModal = document.getElementById('game-modal');
+    var gameOpen = gameModal && !gameModal.hidden;
 
     // 2048 게임이 열려 있으면 게임 쪽에서 키를 처리
-    var gameModal = document.getElementById('game-modal');
-    if (gameModal && !gameModal.hidden) return;
+    if (gameOpen) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
 
     if (e.key === 'Escape' && openLetter) {
       close();
+      return;
+    }
+
+    // 스페이스바 → Info 탭
+    if (code === 'Space' && !openLetter) {
+      e.preventDefault();
+      var space = physKey('Space');
+      if (space && space.href) window.location.href = space.href;
+      return;
+    }
+
+    // 왼쪽 shift → 2048 게임
+    if (code === 'ShiftLeft' && !openLetter) {
+      var egg = document.querySelector('[data-easter="2048"]');
+      if (egg) egg.click();
       return;
     }
 
@@ -64,6 +111,9 @@
   });
 
   document.addEventListener('keyup', function (e) {
+    var phys = physKey(codeOf(e));
+    if (phys) phys.classList.remove('is-pressed');
+
     var letter = e.key.toLowerCase();
     if (!/^[a-z]$/.test(letter)) return;
     var key = document.querySelector('.key[data-letter="' + letter + '"]');

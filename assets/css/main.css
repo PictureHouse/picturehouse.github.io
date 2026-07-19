@@ -388,9 +388,11 @@ button.key { cursor: pointer; }
   margin-top: 40px;
 }
 
-/* 클릭 가능한 장식 키(이스터에그) */
+/* 클릭 가능한 장식 키(이스터에그): 밝은 키캡으로 구분 */
 .key--egg {
   cursor: pointer;
+  background: linear-gradient(180deg, #57544e 0%, #47443f 55%, #3e3b37 100%);
+  color: #d3cfc4;
   transition: transform 0.07s ease, box-shadow 0.07s ease;
 }
 
@@ -415,8 +417,15 @@ button.key { cursor: pointer; }
 /* ===== 2048 game ===== */
 .game-card { width: min(460px, 100%); }
 
+.game-card .miniapp-modal__close {
+  background: rgba(27, 26, 24, 0.08);
+  color: var(--ink);
+}
+
+.game-card .miniapp-modal__close:hover { background: rgba(27, 26, 24, 0.18); }
+
 .game-head {
-  padding: 48px 32px 24px;
+  padding: 44px 32px 24px;
   text-align: center;
 }
 
@@ -463,6 +472,7 @@ button.key { cursor: pointer; }
 .game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   gap: 10px;
   width: min(340px, calc(100% - 48px));
   aspect-ratio: 1;
@@ -474,6 +484,8 @@ button.key { cursor: pointer; }
 }
 
 .game-cell {
+  min-width: 0;
+  min-height: 0;
   border-radius: 8px;
   background: rgba(242, 240, 234, 0.08);
   display: flex;

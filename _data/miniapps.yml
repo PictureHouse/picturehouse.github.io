@@ -17,16 +17,16 @@
 #     ...
 
 - letter: r
-  name: MyRaum
+  name: My Raum
   tagline: RoomPlan으로 공간을 기록하고 공유하는 앱
   icon: /assets/icons/mini/r.png
+  store_url: https://apps.apple.com/kr/app/my-raum/id6504674031
   github_url: https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M15-RoomPlan
   description: |
     ## 소개
 
-    MyRaum은 Apple의 RoomPlan과 Maps를 활용해 공간을 3D로 스캔하고,
+    My Raum은 Apple의 RoomPlan과 Maps를 활용해 공간을 3D로 스캔하고,
     위치 정보와 함께 생생하게 기록·공유할 수 있는 iOS 앱입니다.
-    Apple Developer Academy @ POSTECH의 NC2 프로젝트로 개발했습니다.
 
     ## 주요 기능
 

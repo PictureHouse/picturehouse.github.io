@@ -77,12 +77,43 @@ img { max-width: 100%; }
 }
 
 .site-logo {
+  display: inline-flex;
+  align-items: baseline;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   padding: 20px 0;
   white-space: nowrap;
+}
+
+/* 로고: 글자 단위 등장 애니메이션 + 호버 웨이브 */
+.site-logo__char {
+  display: inline-block;
+  animation: logo-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+
+.site-logo__char--space { width: 0.4em; }
+
+.site-logo__glyph {
+  display: inline-block;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i, 0) * 25ms);
+}
+
+.site-logo:hover .site-logo__glyph {
+  transform: translateY(-3px);
+}
+
+@keyframes logo-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-logo__char { animation: none; }
+  .site-logo:hover .site-logo__glyph { transform: none; }
 }
 
 .tabs {
@@ -686,7 +717,6 @@ button.key { cursor: pointer; }
   font-family: var(--serif);
   font-weight: 500;
   font-size: clamp(2rem, 4.5vw, 2.8rem);
-  text-transform: uppercase;
   letter-spacing: 0.01em;
   line-height: 1.1;
   margin: 0 0 10px;
@@ -742,7 +772,6 @@ button.key { cursor: pointer; }
   font-family: var(--serif);
   font-weight: 500;
   font-size: clamp(2.2rem, 5.5vw, 3.6rem);
-  text-transform: uppercase;
   letter-spacing: 0.01em;
   line-height: 1.1;
   margin: 0 0 12px;
@@ -825,9 +854,10 @@ button.key { cursor: pointer; }
   color: var(--muted);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
   margin: 4px 0;
 }
+
+.privacy-updated { text-transform: uppercase; }
 
 .prose { font-size: 0.95rem; }
 

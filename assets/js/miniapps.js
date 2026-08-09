@@ -81,9 +81,16 @@
 
     var gameModal = document.getElementById('game-modal');
     var gameOpen = gameModal && !gameModal.hidden;
-
     // 2048 게임이 열려 있으면 게임 쪽에서 키를 처리
     if (gameOpen) return;
+
+    // 왼쪽 ctrl → F1 Circuit 게임 (수식키 판별보다 먼저 처리)
+    if (code === 'ControlLeft' && !openLetter) {
+      var f1Egg = document.querySelector('[data-easter="f1"]');
+      if (f1Egg) f1Egg.click();
+      return;
+    }
+
     if (e.metaKey || e.ctrlKey || e.altKey) return;
 
     if (e.key === 'Escape' && openLetter) {
@@ -125,5 +132,30 @@
     if (!letter) return;
     var key = document.querySelector('.key[data-letter="' + letter + '"]');
     if (key) key.classList.remove('is-pressed');
+  });
+})();
+
+/* 이스터에그: ctrl 키 → F1 Circuit 게임 팝업 창 */
+(function () {
+  var egg = document.querySelector('[data-easter="f1"]');
+  if (!egg) return;
+
+  // iframe 임베드 대신 팝업 창으로 연다 — 게임이 localStorage를 쓰기 때문에
+  // 서드파티 컨텍스트(iframe)에서는 브라우저가 저장소를 막아 화면이 뜨지 않는다.
+  egg.addEventListener('click', function (e) {
+    var url = egg.href;
+    var w = Math.min(1024, Math.max(360, window.screen.availWidth - 120));
+    var h = Math.min(720, Math.max(320, window.screen.availHeight - 160));
+    var left = Math.round((window.screen.availWidth - w) / 2);
+    var top = Math.round((window.screen.availHeight - h) / 2);
+    var win = window.open(
+      url, 'f1-circuit',
+      'popup=yes,width=' + w + ',height=' + h + ',left=' + left + ',top=' + top
+    );
+    // 팝업이 막히면 target="_blank" 기본 동작(새 탭)으로 넘긴다
+    if (win) {
+      e.preventDefault();
+      win.focus();
+    }
   });
 })();

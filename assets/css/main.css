@@ -211,6 +211,7 @@ img { max-width: 100%; }
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .site-footer a { color: var(--muted); text-decoration: underline; }
@@ -258,12 +259,15 @@ img { max-width: 100%; }
 /* ===== Resume ===== */
 .resume {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 64px;
   margin-top: 40px;
   padding-top: 64px;
   border-top: 1px solid var(--line);
 }
+
+/* 긴 항목이 있어도 두 컬럼 폭이 정확히 1:1을 유지하도록 */
+.resume-col { min-width: 0; }
 
 .resume-title {
   font-family: var(--serif);

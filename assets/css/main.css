@@ -258,7 +258,7 @@ img { max-width: 100%; }
 /* ===== Resume ===== */
 .resume {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 64px;
   margin-top: 40px;
   padding-top: 64px;

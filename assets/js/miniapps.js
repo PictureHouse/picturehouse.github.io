@@ -1,4 +1,37 @@
 (function () {
+  /* 이스터에그: ctrl 키 → F1 Circuit 게임 팝업 창 */
+  var f1Egg = document.querySelector('[data-easter="f1"]');
+
+  // iframe 임베드 대신 팝업 창으로 연다 — 게임이 localStorage를 쓰기 때문에
+  // 서드파티 컨텍스트(iframe)에서는 브라우저가 저장소를 막아 화면이 뜨지 않는다.
+  // 클릭과 키보드 입력이 같은 경로를 타도록 하나의 함수로 처리한다.
+  function openF1Circuit() {
+    if (!f1Egg) return;
+    var url = f1Egg.href;
+    var w = Math.min(1024, Math.max(360, window.screen.availWidth - 120));
+    var h = Math.min(720, Math.max(320, window.screen.availHeight - 160));
+    var left = Math.round((window.screen.availWidth - w) / 2);
+    var top = Math.round((window.screen.availHeight - h) / 2);
+    var win = window.open(
+      url, 'f1-circuit',
+      'popup=yes,width=' + w + ',height=' + h + ',left=' + left + ',top=' + top
+    );
+    // 팝업 창이 막히면 새 탭으로, 새 탭도 막히면 현재 탭에서 연다
+    if (!win) win = window.open(url, '_blank');
+    if (!win) {
+      window.location.href = url;
+      return;
+    }
+    win.focus();
+  }
+
+  if (f1Egg) {
+    f1Egg.addEventListener('click', function (e) {
+      e.preventDefault();
+      openF1Circuit();
+    });
+  }
+
   var modal = document.getElementById('miniapp-modal');
   if (!modal) return;
 
@@ -84,10 +117,13 @@
     // 2048 게임이 열려 있으면 게임 쪽에서 키를 처리
     if (gameOpen) return;
 
+    // 키를 누르고 있는 동안의 자동 반복은 무시 (팝업이 여러 번 열리는 것 방지)
+    if (e.repeat) return;
+
     // 왼쪽 ctrl → F1 Circuit 게임 (수식키 판별보다 먼저 처리)
     if (code === 'ControlLeft' && !openLetter) {
-      var f1Egg = document.querySelector('[data-easter="f1"]');
-      if (f1Egg) f1Egg.click();
+      e.preventDefault();
+      openF1Circuit();
       return;
     }
 
@@ -132,30 +168,5 @@
     if (!letter) return;
     var key = document.querySelector('.key[data-letter="' + letter + '"]');
     if (key) key.classList.remove('is-pressed');
-  });
-})();
-
-/* 이스터에그: ctrl 키 → F1 Circuit 게임 팝업 창 */
-(function () {
-  var egg = document.querySelector('[data-easter="f1"]');
-  if (!egg) return;
-
-  // iframe 임베드 대신 팝업 창으로 연다 — 게임이 localStorage를 쓰기 때문에
-  // 서드파티 컨텍스트(iframe)에서는 브라우저가 저장소를 막아 화면이 뜨지 않는다.
-  egg.addEventListener('click', function (e) {
-    var url = egg.href;
-    var w = Math.min(1024, Math.max(360, window.screen.availWidth - 120));
-    var h = Math.min(720, Math.max(320, window.screen.availHeight - 160));
-    var left = Math.round((window.screen.availWidth - w) / 2);
-    var top = Math.round((window.screen.availHeight - h) / 2);
-    var win = window.open(
-      url, 'f1-circuit',
-      'popup=yes,width=' + w + ',height=' + h + ',left=' + left + ',top=' + top
-    );
-    // 팝업이 막히면 target="_blank" 기본 동작(새 탭)으로 넘긴다
-    if (win) {
-      e.preventDefault();
-      win.focus();
-    }
   });
 })();

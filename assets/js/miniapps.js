@@ -1,35 +1,15 @@
 (function () {
-  /* 이스터에그: ctrl 키 → F1 Circuit 게임 팝업 창 */
+  /* 이스터에그: 오른쪽 cmd 키 → F1 Circuit 게임 새 탭/새 창 */
   var f1Egg = document.querySelector('[data-easter="f1"]');
 
-  // iframe 임베드 대신 팝업 창으로 연다 — 게임이 localStorage를 쓰기 때문에
+  // iframe 임베드 대신 새 탭(창)으로 연다 — 게임이 localStorage를 쓰기 때문에
   // 서드파티 컨텍스트(iframe)에서는 브라우저가 저장소를 막아 화면이 뜨지 않는다.
-  // 클릭과 키보드 입력이 같은 경로를 타도록 하나의 함수로 처리한다.
+  // 키캡 클릭은 앵커의 target="_blank"가 그대로 처리하고(팝업 차단 대상이 아님),
+  // 키보드 입력만 여기서 같은 주소를 새 탭으로 연다.
   function openF1Circuit() {
     if (!f1Egg) return;
-    var url = f1Egg.href;
-    var w = Math.min(1024, Math.max(360, window.screen.availWidth - 120));
-    var h = Math.min(720, Math.max(320, window.screen.availHeight - 160));
-    var left = Math.round((window.screen.availWidth - w) / 2);
-    var top = Math.round((window.screen.availHeight - h) / 2);
-    var win = window.open(
-      url, 'f1-circuit',
-      'popup=yes,width=' + w + ',height=' + h + ',left=' + left + ',top=' + top
-    );
-    // 팝업 창이 막히면 새 탭으로, 새 탭도 막히면 현재 탭에서 연다
-    if (!win) win = window.open(url, '_blank');
-    if (!win) {
-      window.location.href = url;
-      return;
-    }
-    win.focus();
-  }
-
-  if (f1Egg) {
-    f1Egg.addEventListener('click', function (e) {
-      e.preventDefault();
-      openF1Circuit();
-    });
+    var win = window.open(f1Egg.href, '_blank', 'noopener');
+    if (win) win.focus();
   }
 
   var modal = document.getElementById('miniapp-modal');
@@ -120,8 +100,8 @@
     // 키를 누르고 있는 동안의 자동 반복은 무시 (팝업이 여러 번 열리는 것 방지)
     if (e.repeat) return;
 
-    // 왼쪽 ctrl → F1 Circuit 게임 (수식키 판별보다 먼저 처리)
-    if (code === 'ControlLeft' && !openLetter) {
+    // 오른쪽 cmd → F1 Circuit 게임 (수식키 판별보다 먼저 처리)
+    if (code === 'MetaRight' && !openLetter) {
       e.preventDefault();
       openF1Circuit();
       return;

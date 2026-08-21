@@ -6,7 +6,7 @@ permalink: /mini-apps/
   <header class="miniapps-header">
     <p class="eyebrow">A to Z, One at a Time</p>
     <h1 class="display">My <em>Mini Apps</em></h1>
-    <p>필요한 앱과 툴을 만들어서 직접 사용하고 배포하고 있어요. 채워진 키를 눌러보세요.</p>
+    <p>필요한 앱과 툴을 만들어서 직접 사용하고 배포하고 있어요.<br>채워진 키를 눌러보세요.</p>
   </header>
 
   <div class="keyboard" role="list">
@@ -42,11 +42,11 @@ permalink: /mini-apps/
     </div>
     {% endfor %}
     <div class="kb-row kb-row--bottom">
-      <a class="key key--deco key--egg" href="https://f1-circuit.vercel.app" target="_blank" rel="noopener" data-easter="f1" data-phys="ControlLeft" aria-label="F1 Circuit 게임 열기"><span class="key-label">ctrl</span></a>
+      <div class="key key--deco" data-phys="ControlLeft"><span class="key-label">ctrl</span></div>
       <div class="key key--deco" data-phys="AltLeft"><span class="key-label">opt</span></div>
       <div class="key key--deco key--cmd" data-phys="MetaLeft"><span class="key-label">cmd</span></div>
       <a class="key key--deco key--space key--egg" href="{{ '/' | relative_url }}" data-phys="Space" aria-label="Info 탭으로 이동"><span class="key-label">picturehouse</span></a>
-      <div class="key key--deco key--cmd" data-phys="MetaRight"><span class="key-label">cmd</span></div>
+      <a class="key key--deco key--cmd key--egg" href="https://f1-circuit.vercel.app" target="_blank" rel="noopener" data-easter="f1" data-phys="MetaRight" aria-label="F1 Circuit 게임 열기"><span class="key-label">cmd</span></a>
       <div class="key key--deco" data-phys="AltRight"><span class="key-label">opt</span></div>
     </div>
   </div>

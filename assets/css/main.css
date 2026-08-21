@@ -350,7 +350,7 @@ img { max-width: 100%; }
 .miniapps-header p:not(.eyebrow) {
   color: var(--muted);
   margin: 24px auto 0;
-  max-width: 440px;
+  max-width: 520px;
   font-size: 0.95rem;
 }
 

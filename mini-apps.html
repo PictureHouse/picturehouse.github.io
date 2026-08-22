@@ -43,7 +43,16 @@ permalink: /mini-apps/
     {% endfor %}
     <div class="kb-row kb-row--bottom">
       <div class="key key--deco" data-phys="ControlLeft"><span class="key-label">ctrl</span></div>
+      {% assign opt_app = site.data.miniapps | where: "letter", "opt" | first %}
+      {% if opt_app %}
+      <button type="button" role="listitem" class="key key--active" data-letter="opt" data-phys="AltLeft"
+              aria-haspopup="dialog" aria-label="{{ opt_app.name }}">
+        <img class="key-icon" src="{{ opt_app.icon | relative_url }}" alt="">
+        <span class="key-tooltip">{{ opt_app.name }}{% if opt_app.tagline %} — {{ opt_app.tagline }}{% endif %}</span>
+      </button>
+      {% else %}
       <div class="key key--deco" data-phys="AltLeft"><span class="key-label">opt</span></div>
+      {% endif %}
       <div class="key key--deco key--cmd" data-phys="MetaLeft"><span class="key-label">cmd</span></div>
       <a class="key key--deco key--space key--egg" href="{{ '/' | relative_url }}" data-phys="Space" aria-label="Info 탭으로 이동"><span class="key-label">picturehouse</span></a>
       <a class="key key--deco key--cmd key--egg" href="https://f1-circuit.vercel.app" target="_blank" rel="noopener" data-easter="f1" data-phys="MetaRight" aria-label="F1 Circuit 게임 열기"><span class="key-label">cmd</span></a>

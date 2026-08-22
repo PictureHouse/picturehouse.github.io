@@ -107,6 +107,16 @@
       return;
     }
 
+    // 왼쪽 opt → opt 미니앱 모달 (수식키 판별보다 먼저 처리)
+    if (code === 'AltLeft' && !openLetter) {
+      var optKey = document.querySelector('.key--active[data-letter="opt"]');
+      if (optKey) {
+        e.preventDefault();
+        open('opt');
+        return;
+      }
+    }
+
     if (e.metaKey || e.ctrlKey || e.altKey) return;
 
     if (e.key === 'Escape' && openLetter) {

@@ -932,8 +932,8 @@ button.key { cursor: pointer; }
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* 전체화면에서는 카드 팝업보다 좌우 여백을 더 좁게 */
-    padding: calc(56px + env(safe-area-inset-top)) 16px 40px;
+    /* 좌우 여백은 INFO 탭(.container)과 동일한 24px */
+    padding: calc(56px + env(safe-area-inset-top)) 24px 40px;
   }
 
   .miniapp-modal__icon {
@@ -948,11 +948,11 @@ button.key { cursor: pointer; }
 
   .miniapp-modal__tagline { margin-bottom: 24px; }
 
-  .miniapp-modal__screens { padding: 28px 16px 0; }
+  .miniapp-modal__screens { padding: 28px 24px 0; }
   .miniapp-modal__screens img { height: 240px; }
 
   .miniapp-modal__body {
-    padding: 28px 16px calc(40px + env(safe-area-inset-bottom));
+    padding: 28px 24px calc(40px + env(safe-area-inset-bottom));
   }
 
   /* 내용이 길어도 닫기 버튼은 항상 화면에 고정 */
@@ -976,8 +976,8 @@ button.key { cursor: pointer; }
     padding-bottom: calc(24px + env(safe-area-inset-bottom));
   }
 
-  .game-head { padding: calc(48px + env(safe-area-inset-top)) 16px 24px; }
-  .game-board { width: min(340px, calc(100% - 32px)); }
+  .game-head { padding: calc(48px + env(safe-area-inset-top)) 24px 24px; }
+  .game-board { width: min(340px, calc(100% - 48px)); }
 }
 
 @keyframes modal-up {

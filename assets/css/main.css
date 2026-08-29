@@ -901,4 +901,86 @@ button.key { cursor: pointer; }
   }
   .resume-col .resume-title + .resume-list { margin-bottom: 40px; }
   .resume-col .resume-list:last-child { margin-bottom: 0; }
+
+  /* 팝업(미니앱 소개 · 2048): 좁은 화면에서는 카드 대신 전체화면 */
+  .miniapp-modal {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .miniapp-modal .miniapp-modal__card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: none;
+    height: 100vh;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    animation: modal-up 0.22s ease;
+  }
+
+  /* display 지정이 UA의 [hidden] 규칙을 덮으므로 다시 숨긴다 */
+  .miniapp-modal .miniapp-modal__card[hidden] { display: none; }
+
+  /* 소개가 짧은 앱(Coming Soon 등)도 화면을 꽉 채우도록 히어로를 늘린다 */
+  .miniapp-modal__hero {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* 전체화면에서는 카드 팝업보다 좌우 여백을 더 좁게 */
+    padding: calc(56px + env(safe-area-inset-top)) 16px 40px;
+  }
+
+  .miniapp-modal__icon {
+    align-self: center;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 20px;
+  }
+
+  .miniapp-modal__screens,
+  .miniapp-modal__body { flex: 0 0 auto; }
+
+  .miniapp-modal__tagline { margin-bottom: 24px; }
+
+  .miniapp-modal__screens { padding: 28px 16px 0; }
+  .miniapp-modal__screens img { height: 240px; }
+
+  .miniapp-modal__body {
+    padding: 28px 16px calc(40px + env(safe-area-inset-bottom));
+  }
+
+  /* 내용이 길어도 닫기 버튼은 항상 화면에 고정 */
+  .miniapp-modal .miniapp-modal__close {
+    position: fixed;
+    top: calc(12px + env(safe-area-inset-top));
+    right: 12px;
+    z-index: 2;
+    background: rgba(27, 26, 24, 0.55);
+    backdrop-filter: blur(6px);
+    color: var(--bg);
+  }
+
+  .miniapp-modal .miniapp-modal__close:hover { background: rgba(27, 26, 24, 0.72); }
+
+  /* 2048: 전체화면 안에서 보드를 세로 가운데로 */
+  .miniapp-modal .game-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: safe center;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+
+  .game-head { padding: calc(48px + env(safe-area-inset-top)) 16px 24px; }
+  .game-board { width: min(340px, calc(100% - 32px)); }
+}
+
+@keyframes modal-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
 }

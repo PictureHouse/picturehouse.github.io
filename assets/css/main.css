@@ -456,9 +456,12 @@ button.key { cursor: pointer; }
     0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
+/* 아이콘은 키캡 너비 기준으로 항상 정사각형을 유지한다.
+   (width/height를 각각 %로 주면 좌우 패딩이 있는 키에서 세로로 길어져 좌우가 잘린다) */
 .key-icon {
   width: 62%;
-  height: 62%;
+  height: auto;
+  aspect-ratio: 1;
   border-radius: 22%;
   object-fit: cover;
   box-shadow: 0 1px 2px rgba(27, 26, 24, 0.25);
@@ -473,6 +476,11 @@ button.key { cursor: pointer; }
 
 .kb-row--bottom .key {
   padding: 0 6px;
+}
+
+/* 아이콘이 인쇄된 키는 패딩 없이 정사각형 콘텐츠 박스를 유지한다. */
+.kb-row--bottom .key--active {
+  padding: 0;
 }
 
 .key--wide { padding: 0 6px; }

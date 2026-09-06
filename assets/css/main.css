@@ -859,6 +859,39 @@ button.key { cursor: pointer; }
   margin: 0 0 16px;
 }
 
+/* 언어 전환 (한국어 / English) */
+.lang-switch {
+  display: inline-flex;
+  gap: 2px;
+  margin-bottom: 24px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+/* .prose a의 밑줄을 덮어야 하므로 선택자를 한 단계 더 구체적으로 둔다. */
+.privacy .lang-switch__item {
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+}
+
+.privacy .lang-switch__item:hover { color: var(--ink); }
+
+.privacy .lang-switch__item.is-current {
+  background: var(--ink);
+  color: var(--bg);
+  cursor: default;
+}
+
 .privacy-app, .privacy-updated {
   color: var(--muted);
   font-size: 0.72rem;

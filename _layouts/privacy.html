@@ -1,11 +1,33 @@
 ---
 layout: default
 ---
+{%- comment -%}
+  개인정보처리방침 레이아웃.
+
+  같은 앱의 언어별 문서는 front matter의 `app`(앱 키)으로 묶고 `lang`(ko/en)으로 구분한다.
+  `app`이 같은 문서가 둘 이상이면 헤더에 언어 전환 링크를 표시한다.
+{%- endcomment -%}
+{%- assign app_key = page.app | default: page.slug -%}
+{%- assign versions = site.privacy | where: "app", app_key -%}
+{%- assign lang_codes = "ko,en" | split: "," -%}
+{%- assign lang_labels = "한국어,English" | split: "," -%}
 <article class="container privacy prose">
   <header class="privacy-header">
+    {%- if versions.size > 1 %}
+    <nav class="lang-switch" aria-label="{% if page.lang == 'en' %}Language{% else %}언어 선택{% endif %}">
+      {%- for code in lang_codes -%}
+        {%- assign doc = versions | where: "lang", code | first -%}
+        {%- if doc %}
+      <a class="lang-switch__item{% if doc.url == page.url %} is-current{% endif %}"
+         href="{{ doc.url | relative_url }}"
+         lang="{{ code }}"{% if doc.url == page.url %} aria-current="page"{% endif %}>{{ lang_labels[forloop.index0] }}</a>
+        {%- endif -%}
+      {%- endfor %}
+    </nav>
+    {%- endif %}
     <h1>{{ page.title }}</h1>
-    {% if page.app_name %}<p class="privacy-app">적용 서비스: {{ page.app_name }}</p>{% endif %}
-    {% if page.updated %}<p class="privacy-updated">최종 개정일: {{ page.updated }}</p>{% endif %}
+    {% if page.app_name %}<p class="privacy-app">{% if page.lang == 'en' %}Applies to{% else %}적용 서비스{% endif %}: {{ page.app_name }}</p>{% endif %}
+    {% if page.updated %}<p class="privacy-updated">{% if page.lang == 'en' %}Last updated: {{ page.updated | date: "%B %-d, %Y" }}{% else %}최종 개정일: {{ page.updated }}{% endif %}</p>{% endif %}
   </header>
   {{ content }}
 </article>

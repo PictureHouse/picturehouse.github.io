@@ -1,6 +1,8 @@
 ---
 title: 집가고싶다 개인정보처리방침
+app: wannagohome
 app_name: 집가고싶다
+lang: ko
 updated: 2026-08-24
 ---
 

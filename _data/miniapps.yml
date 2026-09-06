@@ -10,7 +10,7 @@
 #   store_url: https://apps.apple.com/...  # App Store 버튼 (선택)
 #   github_url: https://github.com/...     # GitHub 버튼 (선택)
 #   privacy: aurora                        # 개인정보처리방침 앱 키 (선택)
-#                                          # 한국어 _privacy/aurora.md, 영어 _privacy/aurora-en.md
+#                                          # _privacy/aurora.md(한국어) · aurora-en.md(영어, 선택)
 #   screenshots:                           # 팝업 스크린샷 (선택)
 #     - /assets/icons/mini/a-shot-1.png
 #   description: |                         # 팝업 본문, 마크다운 (선택)

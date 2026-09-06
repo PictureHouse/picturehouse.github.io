@@ -1,6 +1,8 @@
 ---
 title: Neckle 개인정보처리방침
+app: neckle
 app_name: Neckle
+lang: ko
 updated: 2026-07-19
 ---
 

@@ -6,7 +6,7 @@ tagline: AirPods과 함께하는 간단한 목 운동
 icon: /assets/icons/big/neckle.png
 appstore_url: https://apps.apple.com/kr/app/neckle/id6742444201
 github_url: https://github.com/PictureHouse/Neckle
-privacy: neckle        # _privacy/neckle.md 연결
+privacy: neckle        # 개인정보처리방침 앱 키 (_privacy/neckle.md · neckle-en.md)
 # screenshots:
 #   - /assets/icons/big/neckle-shot-1.png
 #   - /assets/icons/big/neckle-shot-2.png

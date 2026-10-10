@@ -35,6 +35,8 @@
   }
 
   function close() {
+    // 팝업을 닫으면 재생 중인 소개 영상도 멈춘다
+    modal.querySelectorAll('video').forEach(function (v) { v.pause(); });
     modal.hidden = true;
     openLetter = null;
     document.body.style.overflow = '';

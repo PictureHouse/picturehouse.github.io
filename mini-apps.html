@@ -87,8 +87,11 @@ permalink: /mini-apps/
       {% endfor %}
     </div>
     {% endif %}
-    {% if app.description %}
+    {% capture app_media %}{% include media.html src=app.media alt=app.name class="service-media" %}{% endcapture %}
+    {% assign app_media = app_media | strip %}
+    {% if app.description or app_media != "" %}
     <div class="miniapp-modal__body prose">
+      {{ app_media }}
       {{ app.description | markdownify }}
     </div>
     {% endif %}

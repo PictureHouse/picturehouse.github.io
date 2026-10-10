@@ -23,6 +23,7 @@
   name: My Day Off
   tagline: 남은 연차와 예정된 휴가를 한 눈에 보는 연차 관리 앱
   icon: /assets/icons/mini/d.png
+  media: /assets/media/d.mp4
   store_url: https://apps.apple.com/kr/app/my-day-off/id6784244906
   privacy: mydayoff
   description: |
@@ -55,7 +56,6 @@
   name: My Raum
   tagline: RoomPlan으로 공간을 기록하고 공유하는 앱
   icon: /assets/icons/mini/r.png
-  media: /assets/media/r.mp4
   store_url: https://apps.apple.com/kr/app/my-raum/id6504674031
   github_url: https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M15-RoomPlan
   description: |
@@ -79,7 +79,6 @@
   name: 집가고싶다
   tagline: 퇴근까지 남은 시간을 캐릭터와 함께 세는 퇴근 타이머 앱
   icon: /assets/icons/mini/opt.png
-  media: /assets/media/opt.mp4
   store_url: https://apps.apple.com/kr/app/%EC%A7%91%EA%B0%80%EA%B3%A0%EC%8B%B6%EB%8B%A4-%ED%87%B4%EA%B7%BC%ED%83%80%EC%9D%B4%EB%A8%B8-%ED%87%B4%EA%B7%BC%EC%95%8C%EB%A6%AC%EB%AF%B8/id6799638830
   privacy: wannagohome
   description: |

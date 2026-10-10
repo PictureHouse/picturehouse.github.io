@@ -7,7 +7,7 @@ icon: /assets/icons/big/neckle.png
 appstore_url: https://apps.apple.com/kr/app/neckle/id6742444201
 github_url: https://github.com/PictureHouse/Neckle
 privacy: neckle        # 개인정보처리방침 앱 키 (_privacy/neckle.md · neckle-en.md)
-media: /assets/media/neckle.mp4   # 본문 상단 이미지/영상 1개 (png·jpg·gif·webp·mp4·webm·mov, 파일이 없으면 생략됨)
+media: /assets/media/neckle.mp4
 # screenshots:
 #   - /assets/icons/big/neckle-shot-1.png
 #   - /assets/icons/big/neckle-shot-2.png

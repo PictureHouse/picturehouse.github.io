@@ -1,0 +1,15 @@
+{%- comment -%}
+  본문 상단 이미지/영상 1개. src 경로의 파일이 실제로 있을 때만 표시합니다.
+  사용: {% include media.html src=page.media alt="..." class="service-media" %}
+{%- endcomment -%}
+{%- if include.src -%}
+  {%- assign media_file = site.static_files | where: "path", include.src | first -%}
+  {%- if media_file -%}
+    {%- assign media_ext = media_file.extname | downcase -%}
+    {%- if media_ext == '.mp4' or media_ext == '.webm' or media_ext == '.mov' or media_ext == '.m4v' -%}
+<video class="{{ include.class }}" src="{{ include.src | relative_url }}" controls playsinline preload="metadata"></video>
+    {%- else -%}
+<img class="{{ include.class }}" src="{{ include.src | relative_url }}" alt="{{ include.alt }}">
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}

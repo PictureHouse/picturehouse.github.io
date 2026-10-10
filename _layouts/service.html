@@ -25,6 +25,18 @@ layout: default
   {% endif %}
 
   <section class="container service-body prose">
+    {%- comment -%} media 경로의 파일이 실제로 있을 때만 본문 상단에 이미지/영상 표시 {%- endcomment -%}
+    {%- if page.media -%}
+      {%- assign media_file = site.static_files | where: "path", page.media | first -%}
+      {%- if media_file -%}
+        {%- assign media_ext = media_file.extname | downcase -%}
+        {%- if media_ext == '.mp4' or media_ext == '.webm' or media_ext == '.mov' or media_ext == '.m4v' -%}
+    <video class="service-media" src="{{ page.media | relative_url }}" controls playsinline preload="metadata"></video>
+        {%- else -%}
+    <img class="service-media" src="{{ page.media | relative_url }}" alt="{{ page.name }} 소개 이미지">
+        {%- endif -%}
+      {%- endif -%}
+    {%- endif %}
     {{ content }}
   </section>
 </article>

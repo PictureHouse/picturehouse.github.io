@@ -30,7 +30,7 @@ Jekyll 기반 개인 프로젝트 소개 사이트. GitHub Pages가 자동으로
 
 ### 새 서비스(탭) 추가
 
-`_services/앱이름.md` 생성 — front matter에 `name`, `order`(탭 순서), `tagline`, `icon`, 스토어 링크, `screenshots` 목록을 적고, 본문에는 마크다운으로 소개를 작성합니다. 탭은 자동으로 추가됩니다.
+`_services/앱이름.md` 생성 — front matter에 `name`, `order`(탭 순서), `tagline`, `icon`, 스토어 링크, `screenshots` 목록, `media`(본문 상단 이미지/영상 1개, `assets/media/`에 파일이 있을 때만 표시)를 적고, 본문에는 마크다운으로 소개를 작성합니다. 탭은 자동으로 추가됩니다.
 
 ### 개인정보처리방침 추가/개정
 

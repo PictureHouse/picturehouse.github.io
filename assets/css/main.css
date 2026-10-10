@@ -850,6 +850,16 @@ button.key { cursor: pointer; }
 
 .service-body { padding-top: 40px; max-width: 720px; }
 
+.service-media {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 40px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
 /* ===== Privacy / Prose ===== */
 .privacy { padding-top: 96px; max-width: 720px; }
 

@@ -7,6 +7,7 @@ layout: default
       {% if page.icon %}<img class="hero-icon" src="{{ page.icon | relative_url }}" alt="{{ page.name }} 아이콘">{% endif %}
       <h1>{{ page.name }}</h1>
       {% if page.tagline %}<p class="hero-tagline">{{ page.tagline }}</p>{% endif %}
+      {% include platforms.html list=page.platforms %}
       <div class="hero-actions">
         {% if page.appstore_url %}<a class="btn btn--primary" href="{{ page.appstore_url }}" target="_blank" rel="noopener">App Store</a>{% endif %}
         {% if page.playstore_url %}<a class="btn btn--primary" href="{{ page.playstore_url }}" target="_blank" rel="noopener">Google Play</a>{% endif %}

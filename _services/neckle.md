@@ -3,6 +3,7 @@ name: Neckle
 tab: Neckle            # 탭에 표시될 이름 (생략 시 name 사용)
 order: 1               # 탭 정렬 순서
 tagline: AirPods과 함께하는 간단한 목 운동
+platforms: [iOS, iPadOS, macOS]   # 출시 플랫폼 태그 (iOS · iPadOS · macOS · Web · Toss)
 icon: /assets/icons/big/neckle.png
 appstore_url: https://apps.apple.com/kr/app/neckle/id6742444201
 github_url: https://github.com/PictureHouse/Neckle

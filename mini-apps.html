@@ -74,6 +74,7 @@ permalink: /mini-apps/
       <p class="eyebrow">Mini App — {{ app.letter | upcase }}</p>
       <h2 class="miniapp-modal__name">{{ app.name }}</h2>
       {% if app.tagline %}<p class="miniapp-modal__tagline">{{ app.tagline }}</p>{% endif %}
+      {% include platforms.html list=app.platforms %}
       <div class="hero-actions">
         {% if app.store_url and app.store_url != '#' %}<a class="btn btn--primary" href="{{ app.store_url }}" target="_blank" rel="noopener">App Store</a>{% endif %}
         {% if app.github_url %}<a class="btn btn--primary" href="{{ app.github_url }}" target="_blank" rel="noopener">GitHub</a>{% endif %}

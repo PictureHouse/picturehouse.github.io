@@ -1,6 +1,11 @@
-# Privacy Policy
-
-**Effective date: October 12, 2026**
+---
+title: My Day Off Privacy Policy
+app: mydayoff
+app_name: My Day Off
+lang: en
+updated: 2026-10-12
+permalink: /privacy/mydayoff/en/
+---
 
 My Day Off (the "App") respects your privacy. The App handles only the minimum information needed to track your annual leave, and that information never leaves your device.
 

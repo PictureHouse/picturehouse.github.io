@@ -1,11 +1,6 @@
----
-title: My Day Off Privacy Policy
-app: mydayoff
-app_name: My Day Off
-lang: en
-updated: 2026-09-15
-permalink: /privacy/mydayoff/en/
----
+# Privacy Policy
+
+**Effective date: October 12, 2026**
 
 My Day Off (the "App") respects your privacy. The App handles only the minimum information needed to track your annual leave, and that information never leaves your device.
 
@@ -38,7 +33,7 @@ The App does not automatically collect any device information or usage history.
 The App uses the following permissions, each only for the feature described:
 
 - **Notifications**: to remind you to confirm whether a leave was actually used once it ends. The App asks for this permission when you choose to enable reminders during the first-run introduction.
-- **Calendar**: used **for reading only**, to load the regional public holiday calendar your device subscribes to. The holiday names and dates are used solely to display holidays on the App's calendar screen; they are not stored separately or sent anywhere. The App never creates, modifies, or deletes calendar events, and does not read your personal events.
+- **Calendar**: used to load the regional public holiday calendar your device subscribes to and display holidays on the App's calendar screen. The holiday names and dates are not stored separately or sent anywhere. Only if you turn on **Calendar Sync** in Settings, the App adds the leaves you register (date, time, title, and description) as events in your device's calendar, and updates or deletes those events when you edit or delete the leaves. The App only handles events it created itself and does not read or change your personal events. Events added to your calendar may be synced according to your device's calendar account settings (e.g., iCloud).
 
 You may decline either permission, or revoke it later. Doing so disables only the related feature (reminders, or holiday display) and leaves the rest of the App fully usable. You can change these permissions at any time in your device's Settings app.
 

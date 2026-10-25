@@ -292,6 +292,24 @@ img { max-width: 100%; }
 
 .social-btn svg { flex-shrink: 0; }
 
+/* 메인 화면: 히어로를 헤더와 푸터 사이 화면 정중앙에 둔다 */
+.page-home {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-home .site-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page-home .home-hero { padding: 64px 0; }
+.page-home .site-footer { margin-top: 0; }
+
 /* ===== Resume ===== */
 .resume {
   display: grid;
@@ -300,6 +318,13 @@ img { max-width: 100%; }
   margin-top: 40px;
   padding-top: 64px;
   border-top: 1px solid var(--line);
+}
+
+/* Info 탭: 히어로 없이 단독으로 쓰므로 구분선 대신 상단 여백만 둔다 */
+.resume--page {
+  margin-top: 0;
+  padding-top: 96px;
+  border-top: 0;
 }
 
 /* 긴 항목이 있어도 두 컬럼 폭이 정확히 1:1을 유지하도록 */
@@ -1153,6 +1178,8 @@ button.key { cursor: pointer; }
   .key { border-radius: 6px; }
   .key-icon { border-radius: 20%; }
   .home-hero { padding: 72px 0 48px; }
+  .page-home .home-hero { padding: 48px 0; }
+  .resume--page { padding-top: 64px; }
   .miniapps { padding-top: 64px; }
   .site-logo { padding: 16px 0; }
 

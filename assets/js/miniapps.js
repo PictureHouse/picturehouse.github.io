@@ -115,7 +115,7 @@
       return;
     }
 
-    // 스페이스바 → Info 탭
+    // 스페이스바 → 메인 화면
     if (code === 'Space' && !openLetter) {
       e.preventDefault();
       var space = physKey('Space');

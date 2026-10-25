@@ -8,10 +8,13 @@
 #   tagline: 한 줄 소개                     # 팝업·툴팁에 표시 (선택)
 #   platforms: [iOS, macOS]                # 출시 플랫폼 태그 (선택) — iOS · iPadOS · macOS · Web · Toss
 #   icon: /assets/icons/mini/a.png         # 아이콘 경로 (필수)
-#   store_url: https://apps.apple.com/...  # App Store 버튼 (선택)
-#   github_url: https://github.com/...     # GitHub 버튼 (선택)
-#   privacy: aurora                        # 개인정보처리방침 앱 키 (선택)
+#   store_url: https://apps.apple.com/...  # iOS·iPadOS·macOS 태그 클릭 시 이동 (선택)
+#   web_url: https://...                   # Web 태그 클릭 시 이동 (선택)
+#   toss_url: https://...                  # Toss 태그 클릭 시 미니앱으로 이동 (선택)
+#   github_url: https://github.com/...     # 하단 GitHub 버튼 (선택)
+#   privacy: aurora                        # 하단 개인정보처리방침 버튼 — 앱 키 (선택)
 #                                          # _privacy/aurora.md(한국어) · aurora-en.md(영어, 선택)
+#   terms_url: https://...                 # 하단 이용약관 버튼 (선택)
 #   media: /assets/media/a.mp4             # 소개 상단 이미지/영상 1개 (선택, 파일이 있을 때만 표시)
 #                                          # png·jpg·gif·webp·mp4·webm·mov·m4v
 #   screenshots:                           # 팝업 스크린샷 (선택)

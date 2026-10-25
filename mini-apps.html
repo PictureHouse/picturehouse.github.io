@@ -74,12 +74,7 @@ permalink: /mini-apps/
       <p class="eyebrow">Mini App — {{ app.letter | upcase }}</p>
       <h2 class="miniapp-modal__name">{{ app.name }}</h2>
       {% if app.tagline %}<p class="miniapp-modal__tagline">{{ app.tagline }}</p>{% endif %}
-      {% include platforms.html list=app.platforms %}
-      <div class="hero-actions">
-        {% if app.store_url and app.store_url != '#' %}<a class="btn btn--primary" href="{{ app.store_url }}" target="_blank" rel="noopener">App Store</a>{% endif %}
-        {% if app.github_url %}<a class="btn btn--primary" href="{{ app.github_url }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
-        {% if app.privacy %}<a class="btn btn--ghost" href="{{ '/privacy/' | append: app.privacy | append: '/' | relative_url }}">개인정보처리방침</a>{% endif %}
-      </div>
+      {% include platforms.html list=app.platforms apple_url=app.store_url web_url=app.web_url toss_url=app.toss_url %}
     </div>
     {% if app.screenshots %}
     <div class="miniapp-modal__screens">
@@ -90,10 +85,13 @@ permalink: /mini-apps/
     {% endif %}
     {% capture app_media %}{% include media.html src=app.media alt=app.name class="service-media" %}{% endcapture %}
     {% assign app_media = app_media | strip %}
-    {% if app.description or app_media != "" %}
+    {% capture app_actions %}{% include actions.html github_url=app.github_url privacy=app.privacy terms_url=app.terms_url %}{% endcapture %}
+    {% assign app_actions = app_actions | strip %}
+    {% if app.description or app_media != "" or app_actions != "" %}
     <div class="miniapp-modal__body prose">
       {{ app_media }}
       {{ app.description | markdownify }}
+      {{ app_actions }}
     </div>
     {% endif %}
   </section>

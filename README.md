@@ -24,13 +24,20 @@ Jekyll 기반 개인 프로젝트 소개 사이트. GitHub Pages가 자동으로
   name: Bloom
   tagline: 한 줄 소개
   icon: /assets/icons/mini/b.png
-  store_url: https://apps.apple.com/...
-  privacy: bloom            # 방침이 있으면 _privacy/bloom.md 생성 후 지정
+  platforms: [iOS, Web]
+  store_url: https://apps.apple.com/...   # iOS·iPadOS·macOS 태그 → App Store
+  web_url: https://...                     # Web 태그 → 웹페이지
+  # toss_url: https://...                  # Toss 태그 → 미니앱
+  github_url: https://github.com/...       # 하단 버튼
+  privacy: bloom            # 방침이 있으면 _privacy/bloom.md 생성 후 지정 (하단 버튼)
+  terms_url: https://...                   # 하단 이용약관 버튼
 ```
+
+플랫폼 태그는 링크가 있으면 클릭 시 해당 링크로 이동합니다. 하단 버튼(GitHub · 개인정보처리방침 · 이용약관)은 값이 있을 때만 표시됩니다.
 
 ### 새 서비스(탭) 추가
 
-`_services/앱이름.md` 생성 — front matter에 `name`, `order`(탭 순서), `tagline`, `icon`, 스토어 링크, `screenshots` 목록, `media`(본문 상단 이미지/영상 1개, `assets/media/`에 파일이 있을 때만 표시 — 미니앱은 `_data/miniapps.yml`에 동일하게 지정)를 적고, 본문에는 마크다운으로 소개를 작성합니다. 탭은 자동으로 추가됩니다.
+`_services/앱이름.md` 생성 — front matter에 `name`, `order`(탭 순서), `tagline`, `icon`, `platforms`와 플랫폼 링크(`appstore_url`·`web_url`·`toss_url`), 하단 버튼 링크(`github_url`·`privacy`·`terms_url`), `screenshots` 목록, `media`(본문 상단 이미지/영상 1개, `assets/media/`에 파일이 있을 때만 표시 — 미니앱은 `_data/miniapps.yml`에 동일하게 지정)를 적고, 본문에는 마크다운으로 소개를 작성합니다. 탭은 자동으로 추가됩니다.
 
 ### 개인정보처리방침 추가/개정
 

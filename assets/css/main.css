@@ -800,14 +800,7 @@ button.key { cursor: pointer; }
   margin: 0 0 36px;
 }
 
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* 출시 플랫폼 태그 (타이틀/소개와 버튼 사이) */
+/* 출시 플랫폼 태그 (타이틀/소개 아래) */
 .platform-tags {
   list-style: none;
   display: flex;
@@ -815,7 +808,7 @@ button.key { cursor: pointer; }
   justify-content: center;
   gap: 8px;
   padding: 0;
-  margin: 0 0 32px;
+  margin: 0;
 }
 
 .hero-tagline + .platform-tags,
@@ -836,6 +829,28 @@ button.key { cursor: pointer; }
   line-height: 1.4;
 }
 
+/* 링크가 있는 태그는 내부 링크가 패딩을 가져 태그 전체가 클릭 영역이 된다 */
+.platform-tag--linked { padding: 0; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+.platform-tag--linked:hover {
+  background: rgba(242, 240, 234, 0.16);
+  border-color: rgba(242, 240, 234, 0.4);
+  color: var(--bg);
+}
+
+.platform-tag__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px 5px 10px;
+  color: inherit;
+}
+
+.platform-tag__link::after {
+  content: "↗";
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
 .platform-tag__icon {
   width: 14px;
   height: 14px;
@@ -853,20 +868,23 @@ button.key { cursor: pointer; }
   transition: opacity 0.2s, background 0.2s, color 0.2s;
 }
 
-.btn--primary {
-  background: var(--bg);
+.btn--outline {
+  border: 1px solid var(--line);
   color: var(--ink);
 }
-.btn--primary:hover { opacity: 0.85; }
+.btn--outline:hover { border-color: var(--ink); }
 
-.btn--ghost {
-  border: 1px solid rgba(242, 240, 234, 0.35);
-  color: rgba(242, 240, 234, 0.75);
+/* 소개 영역 최하단 버튼 (GitHub · 개인정보처리방침 · 이용약관) */
+.body-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 48px;
 }
-.btn--ghost:hover {
-  border-color: var(--bg);
-  color: var(--bg);
-}
+
+/* .prose a의 밑줄을 덮는다 */
+.prose .body-actions .btn { text-decoration: none; }
 
 .service-screens {
   display: flex;

@@ -5,9 +5,10 @@ order: 1               # 탭 정렬 순서
 tagline: AirPods과 함께하는 간단한 목 운동
 platforms: [iOS, iPadOS, macOS]   # 출시 플랫폼 태그 (iOS · iPadOS · macOS · Web · Toss)
 icon: /assets/icons/big/neckle.png
-appstore_url: https://apps.apple.com/kr/app/neckle/id6742444201
+appstore_url: https://apps.apple.com/kr/app/neckle/id6742444201   # 애플 플랫폼 태그 링크 (web_url · toss_url도 지원)
 github_url: https://github.com/PictureHouse/Neckle
 privacy: neckle        # 개인정보처리방침 앱 키 (_privacy/neckle.md · neckle-en.md)
+# terms_url:           # 이용약관 링크 (있을 때만 하단 버튼 표시)
 media: /assets/media/neckle.mp4
 # screenshots:
 #   - /assets/icons/big/neckle-shot-1.png

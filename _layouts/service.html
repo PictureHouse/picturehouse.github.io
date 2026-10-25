@@ -7,13 +7,7 @@ layout: default
       {% if page.icon %}<img class="hero-icon" src="{{ page.icon | relative_url }}" alt="{{ page.name }} 아이콘">{% endif %}
       <h1>{{ page.name }}</h1>
       {% if page.tagline %}<p class="hero-tagline">{{ page.tagline }}</p>{% endif %}
-      {% include platforms.html list=page.platforms %}
-      <div class="hero-actions">
-        {% if page.appstore_url %}<a class="btn btn--primary" href="{{ page.appstore_url }}" target="_blank" rel="noopener">App Store</a>{% endif %}
-        {% if page.playstore_url %}<a class="btn btn--primary" href="{{ page.playstore_url }}" target="_blank" rel="noopener">Google Play</a>{% endif %}
-        {% if page.github_url %}<a class="btn btn--primary" href="{{ page.github_url }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
-        {% if page.privacy %}<a class="btn btn--ghost" href="{{ '/privacy/' | append: page.privacy | append: '/' | relative_url }}">개인정보처리방침</a>{% endif %}
-      </div>
+      {% include platforms.html list=page.platforms apple_url=page.appstore_url web_url=page.web_url toss_url=page.toss_url %}
     </div>
   </section>
 
@@ -28,5 +22,6 @@ layout: default
   <section class="container service-body prose">
     {% include media.html src=page.media alt=page.name class="service-media" %}
     {{ content }}
+    {% include actions.html github_url=page.github_url privacy=page.privacy terms_url=page.terms_url %}
   </section>
 </article>

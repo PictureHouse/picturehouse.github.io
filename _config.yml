@@ -4,9 +4,10 @@ url: "https://picturehouse.github.io"
 baseurl: ""
 lang: ko
 
-# 서비스(미니앱이 아닌 앱)와 개인정보처리방침은 컬렉션으로 관리합니다.
+# 서비스(미니앱이 아닌 앱), 개인정보처리방침, 이용약관은 컬렉션으로 관리합니다.
 # _services/앱이름.md → /services/앱이름/
 # _privacy/앱이름.md → /privacy/앱이름/
+# _terms/앱이름.md → /terms/앱이름/
 collections:
   services:
     output: true
@@ -14,6 +15,9 @@ collections:
   privacy:
     output: true
     permalink: /privacy/:name/
+  terms:
+    output: true
+    permalink: /terms/:name/
 
 defaults:
   - scope:
@@ -25,7 +29,12 @@ defaults:
       path: ""
       type: privacy
     values:
-      layout: privacy
+      layout: legal
+  - scope:
+      path: ""
+      type: terms
+    values:
+      layout: legal
   - scope:
       path: ""
     values:

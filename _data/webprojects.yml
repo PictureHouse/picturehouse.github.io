@@ -12,7 +12,7 @@
 #     accent: "#ff2a20"
 #     on_accent: "#ffffff"                  # accent 위 글자색
 #   chips: [Tag A, Tag B]                   # 카드 하단 키워드 (선택)
-#   github_url / privacy / terms_url        # 팝업 하단 버튼 (선택, 미니앱과 동일)
+#   github_url / privacy / terms / terms_url # 팝업 하단 버튼 (선택, 미니앱과 동일)
 #   description: |                          # 팝업 본문, 마크다운 (선택)
 #     ## 소개
 

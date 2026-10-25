@@ -88,7 +88,7 @@ permalink: /mini-apps/
     {% endif %}
     {% capture app_media %}{% include media.html src=app.media alt=app.name class="service-media" %}{% endcapture %}
     {% assign app_media = app_media | strip %}
-    {% capture app_actions %}{% include actions.html github_url=app.github_url privacy=app.privacy terms_url=app.terms_url %}{% endcapture %}
+    {% capture app_actions %}{% include actions.html github_url=app.github_url privacy=app.privacy terms=app.terms terms_url=app.terms_url %}{% endcapture %}
     {% assign app_actions = app_actions | strip %}
     {% if app.description or app_media != "" or app_actions != "" %}
     <div class="miniapp-modal__body prose">

@@ -14,7 +14,9 @@
 #   github_url: https://github.com/...     # 하단 GitHub 버튼 (선택)
 #   privacy: aurora                        # 하단 개인정보처리방침 버튼 — 앱 키 (선택)
 #                                          # _privacy/aurora.md(한국어) · aurora-en.md(영어, 선택)
-#   terms_url: https://...                 # 하단 이용약관 버튼 (선택)
+#   terms: aurora                          # 하단 이용약관 버튼 — 앱 키 (선택)
+#                                          # _terms/aurora.md(한국어) · aurora-en.md(영어, 선택)
+#   terms_url: https://...                 # 외부 이용약관 링크 (선택, terms가 없을 때)
 #   media: /assets/media/a.mp4             # 소개 상단 이미지/영상 1개 (선택, 파일이 있을 때만 표시)
 #                                          # png·jpg·gif·webp·mp4·webm·mov·m4v
 #   screenshots:                           # 팝업 스크린샷 (선택)
@@ -64,6 +66,8 @@
   icon: /assets/icons/mini/r.png
   store_url: https://apps.apple.com/kr/app/my-raum/id6504674031
   github_url: https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M15-RoomPlan
+  privacy: myraum
+  terms: myraum
   description: |
     ## 소개
 

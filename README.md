@@ -11,6 +11,7 @@ Jekyll 기반 개인 프로젝트 소개 사이트. GitHub Pages가 자동으로
 | `_includes/web-art/*.html` | 웹 프로젝트 카드 일러스트 (프로젝트 `id`별 SVG) |
 | `_services/*.md` | 서비스(미니앱이 아닌 앱) 랜딩 페이지 (파일당 앱 1개, 상단 탭 자동 생성) |
 | `_privacy/*.md` | 개인정보처리방침 (파일당 앱 1개) |
+| `_terms/*.md` | 이용약관 (파일당 앱 1개, 개인정보처리방침과 같은 방식) |
 | `assets/icons/mini/` | 미니앱 아이콘 |
 | `assets/icons/web/` | 웹 프로젝트 아이콘 |
 
@@ -32,7 +33,8 @@ Jekyll 기반 개인 프로젝트 소개 사이트. GitHub Pages가 자동으로
   # toss_url: https://...                  # Toss 태그 → 미니앱
   github_url: https://github.com/...       # 하단 버튼
   privacy: bloom            # 방침이 있으면 _privacy/bloom.md 생성 후 지정 (하단 버튼)
-  terms_url: https://...                   # 하단 이용약관 버튼
+  terms: bloom              # 약관이 있으면 _terms/bloom.md 생성 후 지정 (하단 버튼)
+  # terms_url: https://...                 # 외부 약관 링크를 쓸 때 (terms가 없을 때만)
 ```
 
 플랫폼 태그는 링크가 있으면 클릭 시 해당 링크로 이동합니다. 하단 버튼(GitHub · 개인정보처리방침 · 이용약관)은 값이 있을 때만 표시됩니다.
@@ -47,7 +49,7 @@ Jekyll 기반 개인 프로젝트 소개 사이트. GitHub Pages가 자동으로
 
 ### 새 서비스(탭) 추가
 
-`_services/앱이름.md` 생성 — front matter에 `name`, `order`(탭 순서), `tagline`, `icon`, `platforms`와 플랫폼 링크(`appstore_url`·`web_url`·`toss_url`), 하단 버튼 링크(`github_url`·`privacy`·`terms_url`), `screenshots` 목록, `media`(본문 상단 이미지/영상 1개, `assets/media/`에 파일이 있을 때만 표시 — 미니앱은 `_data/miniapps.yml`에 동일하게 지정)를 적고, 본문에는 마크다운으로 소개를 작성합니다. 탭은 자동으로 추가됩니다.
+`_services/앱이름.md` 생성 — front matter에 `name`, `order`(탭 순서), `tagline`, `icon`, `platforms`와 플랫폼 링크(`appstore_url`·`web_url`·`toss_url`), 하단 버튼 링크(`github_url`·`privacy`·`terms`·`terms_url`), `screenshots` 목록, `media`(본문 상단 이미지/영상 1개, `assets/media/`에 파일이 있을 때만 표시 — 미니앱은 `_data/miniapps.yml`에 동일하게 지정)를 적고, 본문에는 마크다운으로 소개를 작성합니다. 탭은 자동으로 추가됩니다.
 
 ### 개인정보처리방침 추가/개정
 
@@ -88,6 +90,15 @@ permalink: /privacy/bloom/en/   # 영어 문서는 permalink를 직접 지정
 - 영어: `https://picturehouse.github.io/privacy/앱이름/en/` (영어 문서를 만든 경우)
 
 `_data/miniapps.yml`과 `_services/*.md`의 `privacy:` 값에는 **앱 키만** 적으면 되고, 링크는 한국어 문서로 연결됩니다.
+
+### 이용약관 추가/개정
+
+개인정보처리방침과 똑같은 방식입니다. `_terms/앱이름.md`(한국어), `_terms/앱이름-en.md`(영어, `permalink: /terms/앱이름/en/`)를 만들고 `app` 값으로 묶습니다. 두 언어가 있으면 전환 버튼이 자동으로 생깁니다.
+
+- 한국어: `https://picturehouse.github.io/terms/앱이름/`
+- 영어: `https://picturehouse.github.io/terms/앱이름/en/`
+
+`_data/miniapps.yml` 등의 `terms:` 값에 **앱 키만** 적으면 하단 이용약관 버튼이 한국어 문서로 연결됩니다.
 
 ## 로컬 미리보기
 

@@ -2,13 +2,13 @@
 layout: default
 ---
 {%- comment -%}
-  개인정보처리방침 레이아웃.
+  개인정보처리방침 · 이용약관 레이아웃 (_privacy, _terms 컬렉션 공용).
 
-  같은 앱의 언어별 문서는 front matter의 `app`(앱 키)으로 묶고 `lang`(ko/en)으로 구분한다.
+  같은 컬렉션 안에서 같은 앱의 언어별 문서는 front matter의 `app`(앱 키)으로 묶고 `lang`(ko/en)으로 구분한다.
   `app`이 같은 문서가 둘 이상이면 헤더에 언어 전환 링크를 표시한다.
 {%- endcomment -%}
 {%- assign app_key = page.app | default: page.slug -%}
-{%- assign versions = site.privacy | where: "app", app_key -%}
+{%- assign versions = site[page.collection] | where: "app", app_key -%}
 {%- assign lang_codes = "ko,en" | split: "," -%}
 {%- assign lang_labels = "한국어,English" | split: "," -%}
 <article class="container privacy prose">

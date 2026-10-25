@@ -51,7 +51,7 @@ permalink: /web-projects/
       {% if project.tagline %}<p class="miniapp-modal__tagline">{{ project.tagline }}</p>{% endif %}
       {% include platforms.html list=project.platforms web_url=project.url %}
     </div>
-    {% capture wp_actions %}{% include actions.html github_url=project.github_url privacy=project.privacy terms_url=project.terms_url %}{% endcapture %}
+    {% capture wp_actions %}{% include actions.html github_url=project.github_url privacy=project.privacy terms=project.terms terms_url=project.terms_url %}{% endcapture %}
     {% assign wp_actions = wp_actions | strip %}
     {% if project.description or wp_actions != "" %}
     <div class="miniapp-modal__body prose">

@@ -1,11 +1,14 @@
 {%- comment -%}
   소개 영역 하단 버튼 (GitHub · 개인정보처리방침 · 이용약관). 링크가 있는 버튼만 표시합니다.
-  사용: {% include actions.html github_url=page.github_url privacy=page.privacy terms_url=page.terms_url %}
+  privacy · terms에는 앱 키를 적으면 /privacy/앱키/ · /terms/앱키/ 문서로 연결되고,
+  외부 약관 링크는 terms_url로 넘깁니다 (terms가 있으면 terms 우선).
+  사용: {% include actions.html github_url=page.github_url privacy=page.privacy terms=page.terms terms_url=page.terms_url %}
 {%- endcomment -%}
-{%- if include.github_url or include.privacy or include.terms_url -%}
+{%- if include.github_url or include.privacy or include.terms or include.terms_url -%}
 <div class="body-actions">
   {%- if include.github_url %}<a class="btn btn--dark" href="{{ include.github_url }}" target="_blank" rel="noopener">GitHub</a>{% endif -%}
   {%- if include.privacy %}<a class="btn btn--outline" href="{{ '/privacy/' | append: include.privacy | append: '/' | relative_url }}">개인정보처리방침</a>{% endif -%}
-  {%- if include.terms_url %}<a class="btn btn--outline" href="{{ include.terms_url | relative_url }}" target="_blank" rel="noopener">이용약관</a>{% endif -%}
+  {%- if include.terms %}<a class="btn btn--outline" href="{{ '/terms/' | append: include.terms | append: '/' | relative_url }}">이용약관</a>
+  {%- elsif include.terms_url %}<a class="btn btn--outline" href="{{ include.terms_url | relative_url }}" target="_blank" rel="noopener">이용약관</a>{% endif -%}
 </div>
 {%- endif -%}

@@ -64,6 +64,26 @@ img { max-width: 100%; }
   font-size: 0.62em;
 }
 
+/* 커서 주변 글자가 살짝 밀려나는 효과 (hero-title.js) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cursor-letters__word { white-space: nowrap; }
+
+.cursor-letters__char {
+  display: inline-block;
+  will-change: transform;
+}
+
 /* ===== Header / Tabs ===== */
 .site-header {
   background: rgba(242, 240, 234, 0.92);

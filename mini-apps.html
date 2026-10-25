@@ -13,7 +13,7 @@ permalink: /mini-apps/
     {% assign rows = "qwertyuiop,asdfghjkl,zxcvbnm" | split: "," %}
     {% for row in rows %}
     <div class="kb-row kb-row--{{ forloop.index }}">
-      {% if forloop.index == 3 %}<button type="button" class="key key--deco key--wide key--egg" data-easter="2048" data-phys="ShiftLeft" aria-haspopup="dialog" aria-label="2048 게임"><span class="key-label">shift</span></button>{% endif %}
+      {% if forloop.index == 3 %}<div class="key key--deco key--wide" data-phys="ShiftLeft"><span class="key-label">shift</span></div>{% endif %}
       {% assign letters = row | split: "" %}
       {% for letter in letters %}
         {% assign app = site.data.miniapps | where: "letter", letter | first %}
@@ -38,24 +38,28 @@ permalink: /mini-apps/
         {% endif %}
         {% endif %}
       {% endfor %}
-      {% if forloop.index == 3 %}<div class="key key--deco key--wide" data-phys="ShiftRight"><span class="key-label">shift</span></div>{% endif %}
+      {% if forloop.index == 3 %}<button type="button" class="key key--deco key--wide key--egg" data-easter="2048" data-phys="ShiftRight" aria-haspopup="dialog" aria-label="2048 게임"><span class="key-label">shift</span></button>{% endif %}
     </div>
     {% endfor %}
     <div class="kb-row kb-row--bottom">
-      <div class="key key--deco" data-phys="ControlLeft"><span class="key-label">ctrl</span></div>
-      {% assign opt_app = site.data.miniapps | where: "letter", "opt" | first %}
-      {% if opt_app %}
-      <button type="button" role="listitem" class="key key--active" data-letter="opt" data-phys="AltLeft"
-              aria-haspopup="dialog" aria-label="{{ opt_app.name }}">
-        <img class="key-icon" src="{{ opt_app.icon | relative_url }}" alt="">
-        <span class="key-tooltip">{{ opt_app.name }}{% if opt_app.tagline %} — {{ opt_app.tagline }}{% endif %}</span>
+      {% assign mod_keys = "ctrl:ControlLeft,opt:AltLeft" | split: "," %}
+      {% for mod in mod_keys %}
+      {% assign mod_parts = mod | split: ":" %}
+      {% assign mod_letter = mod_parts[0] %}
+      {% assign mod_app = site.data.miniapps | where: "letter", mod_letter | first %}
+      {% if mod_app %}
+      <button type="button" role="listitem" class="key key--active" data-letter="{{ mod_letter }}" data-phys="{{ mod_parts[1] }}"
+              aria-haspopup="dialog" aria-label="{{ mod_app.name }}">
+        <img class="key-icon" src="{{ mod_app.icon | relative_url }}" alt="">
+        <span class="key-tooltip">{{ mod_app.name }}{% if mod_app.tagline %} — {{ mod_app.tagline }}{% endif %}</span>
       </button>
       {% else %}
-      <div class="key key--deco" data-phys="AltLeft"><span class="key-label">opt</span></div>
+      <div class="key key--deco" data-phys="{{ mod_parts[1] }}"><span class="key-label">{{ mod_letter }}</span></div>
       {% endif %}
+      {% endfor %}
       <div class="key key--deco key--cmd" data-phys="MetaLeft"><span class="key-label">cmd</span></div>
       <a class="key key--deco key--space key--egg" href="{{ '/' | relative_url }}" data-phys="Space" aria-label="Info 탭으로 이동"><span class="key-label">picturehouse</span></a>
-      <a class="key key--deco key--cmd key--egg" href="https://f1-circuit.vercel.app" target="_blank" rel="noopener" data-easter="f1" data-phys="MetaRight" aria-label="F1 Circuit 게임 열기"><span class="key-label">cmd</span></a>
+      <div class="key key--deco key--cmd" data-phys="MetaRight"><span class="key-label">cmd</span></div>
       <div class="key key--deco" data-phys="AltRight"><span class="key-label">opt</span></div>
     </div>
   </div>

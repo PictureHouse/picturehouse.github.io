@@ -1,0 +1,90 @@
+# 웹 프로젝트 목록 → /web-projects/ 카드 그리드에 반영
+# 새 프로젝트가 생기면 아래 형식으로 항목을 추가하세요.
+#
+# - id: my-project                          # 고유 키 (필수) — 카드 일러스트 _includes/web-art/<id>.html
+#   name: My Project                        # 이름 (필수)
+#   tagline: 한 줄 소개                      # 카드·팝업에 표시 (선택)
+#   kicker: Game · Three.js                 # 카드 상단 작은 분류 문구 (선택)
+#   icon: /assets/icons/web/my-project.png  # 아이콘 (필수)
+#   url: https://...                        # Web 태그 클릭 시 이동 (필수)
+#   theme:                                  # 카드 색상 (선택)
+#     bg: "#14161c"
+#     accent: "#ff2a20"
+#     on_accent: "#ffffff"                  # accent 위 글자색
+#   chips: [Tag A, Tag B]                   # 카드 하단 키워드 (선택)
+#   github_url / privacy / terms_url        # 팝업 하단 버튼 (선택, 미니앱과 동일)
+#   description: |                          # 팝업 본문, 마크다운 (선택)
+#     ## 소개
+
+- id: f1-circuit
+  name: F1 Circuit
+  tagline: 핸드폰을 스티어링 휠처럼 돌리는 모바일 3D F1 레이싱
+  kicker: Racing Game · Three.js
+  icon: /assets/icons/web/f1-circuit.png
+  url: https://f1-circuit.vercel.app/
+  platforms: [Web]
+  theme:
+    bg: "#14161c"
+    accent: "#ff2a20"
+    on_accent: "#ffffff"
+  chips: [3D Racing, Tilt Control, P2P Multiplayer]
+  description: |
+    ## 소개
+
+    F1 Circuit은 앱 설치 없이 브라우저에서 바로 즐기는 모바일 3D F1 레이싱 게임입니다.
+    핸드폰을 가로로 눕혀 스티어링 휠처럼 돌리면 차가 방향을 틀고,
+    화면을 살짝 젖히거나 숙여 가속과 브레이크를 조작합니다.
+    혼자서 베스트 랩에 도전하거나, 방 코드로 친구들을 모아 레이스를 펼칠 수 있어요.
+
+    ## 주요 기능
+
+    - 기기 동작 조작 — 핸드폰을 기울여 조향·가속·브레이크
+    - PC에서는 방향키·WASD 키보드 조작
+    - 그랑프리 · 스피드웨이 · 테크니컬, 성격이 다른 3가지 트랙
+    - 방 코드로 모이는 친구와의 P2P 레이스
+    - 체이스 뷰 ↔ 드라이버 뷰 시점 전환, 차량 색상 선택
+    - 한국어·영어 지원 (기기 언어에 맞춰 자동 선택)
+
+    ## 기술 노트
+
+    - Three.js + Vite로 만든 정적 웹앱으로, iPhone Safari와 Android Chrome에서 똑같이 동작합니다.
+    - 멀티플레이는 PeerJS(WebRTC)로 기기끼리 직접 연결합니다.
+    - OS 화면 회전 잠금과 상관없이 항상 가로로 보이도록, 세로로 들면 게임 화면을 직접 90° 회전시켜 렌더링합니다.
+    - iOS의 센서 권한 요청과 전체화면 전환이 같은 터치를 두고 충돌하지 않도록 호출 순서를 조정했습니다.
+
+- id: capital-travel
+  name: 수도 여행
+  tagline: 3D 지구본 위를 비행기로 날며 세계의 수도를 익히는 게임
+  kicker: Geography Game · globe.gl
+  icon: /assets/icons/web/capital-travel.png
+  url: https://capital-travel-web.vercel.app/
+  platforms: [Web]
+  theme:
+    bg: "#050a18"
+    accent: "#ffd60a"
+    on_accent: "#1a1400"
+  chips: [3D Globe, 196 Capitals, Travel & Quiz]
+  description: |
+    ## 소개
+
+    수도 여행은 3D 지구본 위를 비행기로 날아다니며 세계 196개국의 수도를 익히는 웹 게임입니다.
+    지금 나라가 지구본 위에 강조되고, 수도를 맞히면 비행기가 이륙해
+    다음 수도까지 대권 항로를 따라 날아가며 지구본도 함께 돌아갑니다.
+
+    ## 모드
+
+    - **여행 모드** — 화면에 나온 수도 이름을 따라 입력하면 다음 도시로 비행합니다.
+      경로는 무작위 또는 가까운 순서로 고를 수 있고, 여행이 끝나면 총 비행 거리와 경로를 보여줍니다.
+    - **퀴즈 모드** — 나라를 보고 수도를 맞힙니다. 힌트와 건너뛰기, 점수와 연속 정답 기록이 있어요.
+
+    ## 주요 기능
+
+    - 전 세계 또는 아시아·유럽·아프리카·북중미·남미·오세아니아 지역별 선택, 문제 수 선택
+    - 한국어·영어 정답 모두 인정, 다른 표기와 작은 오타도 허용
+    - 접속 지역에 따라 한국어/영어 자동 선택, 언제든 전환 가능
+
+    ## 기술 노트
+
+    - globe.gl(three.js) 지구본 위에 국가 경계를 올리고, 대권 항로 비행과 카메라 추적을 구현했습니다.
+    - 비행기는 three.js로 직접 만든 로우폴리 모델입니다.
+    - Vite로 빌드한 정적 사이트입니다.

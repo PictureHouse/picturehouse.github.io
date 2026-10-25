@@ -26,6 +26,7 @@
       <nav class="tabs" aria-label="주요 메뉴">
         <a class="tab {% if page.url == '/' %}tab--active{% endif %}" href="{{ '/' | relative_url }}">Info</a>
         <a class="tab {% if page.url contains '/mini-apps' %}tab--active{% endif %}" href="{{ '/mini-apps/' | relative_url }}">My Mini Apps</a>
+        <a class="tab {% if page.url contains '/web-projects' %}tab--active{% endif %}" href="{{ '/web-projects/' | relative_url }}">Web Projects</a>
         {% assign services = site.services | sort: 'order' %}
         {% for app in services %}
         <a class="tab {% if page.url == app.url %}tab--active{% endif %}" href="{{ app.url | relative_url }}">{{ app.tab | default: app.name }}</a>
@@ -44,6 +45,7 @@
       <nav class="mobile-nav__links">
         <a class="mobile-nav__link {% if page.url == '/' %}is-current{% endif %}" href="{{ '/' | relative_url }}">Info</a>
         <a class="mobile-nav__link {% if page.url contains '/mini-apps' %}is-current{% endif %}" href="{{ '/mini-apps/' | relative_url }}">My Mini Apps</a>
+        <a class="mobile-nav__link {% if page.url contains '/web-projects' %}is-current{% endif %}" href="{{ '/web-projects/' | relative_url }}">Web Projects</a>
         {% for app in services %}
         <a class="mobile-nav__link {% if page.url == app.url %}is-current{% endif %}" href="{{ app.url | relative_url }}">{{ app.tab | default: app.name }}</a>
         {% endfor %}

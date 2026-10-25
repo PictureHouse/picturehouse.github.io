@@ -7,10 +7,12 @@ Jekyll 기반 개인 프로젝트 소개 사이트. GitHub Pages가 자동으로
 | 경로 | 역할 |
 |---|---|
 | `_data/miniapps.yml` | 미니앱 목록 → `/mini-apps/` 키보드 UI에 반영 |
+| `_data/webprojects.yml` | 웹 프로젝트 목록 → `/web-projects/` 카드 UI에 반영 |
+| `_includes/web-art/*.html` | 웹 프로젝트 카드 일러스트 (프로젝트 `id`별 SVG) |
 | `_services/*.md` | 서비스(미니앱이 아닌 앱) 랜딩 페이지 (파일당 앱 1개, 상단 탭 자동 생성) |
 | `_privacy/*.md` | 개인정보처리방침 (파일당 앱 1개) |
 | `assets/icons/mini/` | 미니앱 아이콘 |
-| `assets/icons/big/` | 서비스 아이콘·스크린샷 |
+| `assets/icons/web/` | 웹 프로젝트 아이콘 |
 
 ## 콘텐츠 추가 방법
 
@@ -34,6 +36,14 @@ Jekyll 기반 개인 프로젝트 소개 사이트. GitHub Pages가 자동으로
 ```
 
 플랫폼 태그는 링크가 있으면 클릭 시 해당 링크로 이동합니다. 하단 버튼(GitHub · 개인정보처리방침 · 이용약관)은 값이 있을 때만 표시됩니다.
+
+`letter`에 `ctrl` · `opt`를 쓰면 키보드 하단 왼쪽 ctrl · opt 키에 배치됩니다 (현재 ctrl = Neckle, opt = 집가고싶다).
+
+### 새 웹 프로젝트 추가
+
+1. 아이콘을 `assets/icons/web/<id>.png`로 업로드
+2. `_data/webprojects.yml`에 항목 추가 (`id`, `name`, `tagline`, `kicker`, `icon`, `url`, `platforms: [Web]`, `theme`의 `bg`·`accent`·`on_accent`, `chips`, `description`)
+3. 카드 일러스트를 `_includes/web-art/<id>.html`에 SVG로 작성 — 기존 파일처럼 `include.uid`로 id를 접두하고, 팝업 배너에서 잘리지 않도록 배경은 좌우로 넉넉히(`x="-600" width="1600"`) 깔아둡니다.
 
 ### 새 서비스(탭) 추가
 

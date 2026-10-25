@@ -1,17 +1,4 @@
 (function () {
-  /* 이스터에그: 오른쪽 cmd 키 → F1 Circuit 게임 새 탭/새 창 */
-  var f1Egg = document.querySelector('[data-easter="f1"]');
-
-  // iframe 임베드 대신 새 탭(창)으로 연다 — 게임이 localStorage를 쓰기 때문에
-  // 서드파티 컨텍스트(iframe)에서는 브라우저가 저장소를 막아 화면이 뜨지 않는다.
-  // 키캡 클릭은 앵커의 target="_blank"가 그대로 처리하고(팝업 차단 대상이 아님),
-  // 키보드 입력만 여기서 같은 주소를 새 탭으로 연다.
-  function openF1Circuit() {
-    if (!f1Egg) return;
-    var win = window.open(f1Egg.href, '_blank', 'noopener');
-    if (win) win.focus();
-  }
-
   var modal = document.getElementById('miniapp-modal');
   if (!modal) return;
 
@@ -42,12 +29,20 @@
     document.body.style.overflow = '';
   }
 
-  // 키캡 클릭 → 팝업
-  document.querySelectorAll('.key--active[data-letter]').forEach(function (key) {
-    key.addEventListener('click', function () {
-      open(key.dataset.letter);
+  // 키캡 클릭 → 팝업 (Web Projects 카드는 data-modal-open으로 같은 팝업을 연다)
+  document.querySelectorAll('.key--active[data-letter], [data-modal-open]').forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      open(trigger.dataset.letter || trigger.dataset.modalOpen);
     });
   });
+
+  // 키보드 화면이 없는 페이지(Web Projects)는 Escape로 닫기만 지원
+  if (!document.querySelector('.keyboard')) {
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && openLetter) close();
+    });
+    return;
+  }
 
   // 백드롭 / 닫기 버튼
   modal.addEventListener('click', function (e) {
@@ -102,19 +97,13 @@
     // 키를 누르고 있는 동안의 자동 반복은 무시 (팝업이 여러 번 열리는 것 방지)
     if (e.repeat) return;
 
-    // 오른쪽 cmd → F1 Circuit 게임 (수식키 판별보다 먼저 처리)
-    if (code === 'MetaRight' && !openLetter) {
-      e.preventDefault();
-      openF1Circuit();
-      return;
-    }
-
-    // 왼쪽 opt → opt 미니앱 모달 (수식키 판별보다 먼저 처리)
-    if (code === 'AltLeft' && !openLetter) {
-      var optKey = document.querySelector('.key--active[data-letter="opt"]');
-      if (optKey) {
+    // 왼쪽 ctrl·opt → 해당 미니앱 모달 (수식키 판별보다 먼저 처리)
+    var modLetter = { ControlLeft: 'ctrl', AltLeft: 'opt' }[code];
+    if (modLetter && !openLetter) {
+      var modKey = document.querySelector('.key--active[data-letter="' + modLetter + '"]');
+      if (modKey) {
         e.preventDefault();
-        open('opt');
+        open(modLetter);
         return;
       }
     }
@@ -134,8 +123,8 @@
       return;
     }
 
-    // 왼쪽 shift → 2048 게임
-    if (code === 'ShiftLeft' && !openLetter) {
+    // 오른쪽 shift → 2048 게임
+    if (code === 'ShiftRight' && !openLetter) {
       var egg = document.querySelector('[data-easter="2048"]');
       if (egg) egg.click();
       return;

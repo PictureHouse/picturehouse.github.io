@@ -658,6 +658,172 @@ button.key { cursor: pointer; }
 
 .game-card { padding-bottom: 24px; }
 
+/* ===== Web Projects page ===== */
+.webprojects { padding-top: 96px; }
+
+.wp-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+  gap: 28px;
+  max-width: 992px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* 카드마다 --wp-bg · --wp-accent · --wp-on-accent로 프로젝트 색을 입힌다 */
+.wp-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--wp-bg);
+  color: #f2f0ea;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 24px 48px -24px rgba(27, 26, 24, 0.55);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.wp-card:hover,
+.wp-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--wp-accent) 55%, transparent),
+    0 32px 56px -24px color-mix(in srgb, var(--wp-accent) 45%, rgba(27, 26, 24, 0.6));
+}
+
+.wp-card:focus-visible { outline: 2px solid var(--wp-accent); outline-offset: 3px; }
+
+.wp-card__art {
+  display: block;
+  aspect-ratio: 5 / 3;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.wp-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wp-card__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+  padding: 22px 24px 24px;
+}
+
+.wp-card__kicker {
+  color: var(--wp-accent);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.wp-card__title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wp-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.wp-card__name {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.wp-card__tagline {
+  color: rgba(242, 240, 234, 0.62);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.wp-card__foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.wp-card__chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.wp-chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(242, 240, 234, 0.16);
+  color: rgba(242, 240, 234, 0.78);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.wp-card__more {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--wp-accent);
+  color: var(--wp-on-accent);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: transform 0.25s ease;
+}
+
+.wp-card:hover .wp-card__more { transform: translateX(3px); }
+
+/* 웹 프로젝트 팝업: 히어로 상단에 카드 일러스트를 배너로 깔고 아이콘을 걸친다 */
+.wp-modal .wp-modal__hero {
+  background: var(--wp-bg);
+  padding-top: 0;
+}
+
+.wp-modal__art {
+  height: 240px;
+  margin: 0 -40px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* 좌우로 늘린 배경이 viewBox 밖까지 보이도록 */
+.wp-modal__art .wp-art { overflow: visible; }
+
+.wp-modal .miniapp-modal__icon {
+  position: relative;
+  margin-top: -42px;
+}
+
+.wp-modal .miniapp-modal__hero .eyebrow { color: var(--wp-accent); opacity: 0.9; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-art__mover,
+  .wp-art__pulse { display: none; }
+  .wp-card,
+  .wp-card__more { transition: none; }
+}
+
 /* ===== Mini App Modal ===== */
 .miniapp-modal[hidden] { display: none; }
 
@@ -1051,6 +1217,20 @@ button.key { cursor: pointer; }
   .miniapp-modal__body { flex: 0 0 auto; }
 
   .miniapp-modal__tagline { margin-bottom: 24px; }
+
+  /* 웹 프로젝트 팝업: 배너가 맨 위에 붙도록 위쪽 여백 대신 safe-area만 둔다 */
+  .wp-modal .wp-modal__hero {
+    justify-content: flex-start;
+    padding-top: 0;
+  }
+
+  .wp-modal__art {
+    flex: 0 0 auto;
+    height: calc(200px + env(safe-area-inset-top));
+    margin: 0 -24px;
+  }
+
+  .webprojects { padding-top: 64px; }
 
   .miniapp-modal__screens { padding: 28px 24px 0; }
   .miniapp-modal__screens img { height: 240px; }

@@ -1,0 +1,67 @@
+---
+title: Web Projects
+permalink: /web-projects/
+---
+<section class="container webprojects">
+  <header class="miniapps-header">
+    <p class="eyebrow">Play in Your Browser</p>
+    <h1 class="display">Web <em>Projects</em></h1>
+    <p>설치 없이 브라우저에서 바로 즐길 수 있는 웹 프로젝트들이에요.<br>카드를 눌러 자세히 살펴보세요.</p>
+  </header>
+
+  <ul class="wp-grid" role="list">
+    {% for project in site.data.webprojects %}
+    <li>
+      <button type="button" class="wp-card" data-modal-open="{{ project.id }}" aria-haspopup="dialog"
+              style="--wp-bg: {{ project.theme.bg | default: '#1b1a18' }}; --wp-accent: {{ project.theme.accent | default: '#f2f0ea' }}; --wp-on-accent: {{ project.theme.on_accent | default: '#1b1a18' }};">
+        <span class="wp-card__art">{% include web-art/{{ project.id }}.html uid=project.id %}</span>
+        <span class="wp-card__info">
+          {% if project.kicker %}<span class="wp-card__kicker">{{ project.kicker }}</span>{% endif %}
+          <span class="wp-card__title">
+            <img class="wp-card__icon" src="{{ project.icon | relative_url }}" alt="">
+            <span class="wp-card__name">{{ project.name }}</span>
+          </span>
+          {% if project.tagline %}<span class="wp-card__tagline">{{ project.tagline }}</span>{% endif %}
+          <span class="wp-card__foot">
+            {% if project.chips %}
+            <span class="wp-card__chips">
+              {% for chip in project.chips %}<span class="wp-chip">{{ chip }}</span>{% endfor %}
+            </span>
+            {% endif %}
+            <span class="wp-card__more" aria-hidden="true">→</span>
+          </span>
+        </span>
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<!-- 웹 프로젝트 소개 팝업 (미니앱 팝업과 같은 구조·스크립트) -->
+<div class="miniapp-modal" id="miniapp-modal" hidden>
+  <div class="miniapp-modal__backdrop" data-close></div>
+  {% for project in site.data.webprojects %}
+  <section class="miniapp-modal__card wp-modal" data-modal-letter="{{ project.id }}" role="dialog" aria-modal="true" aria-label="{{ project.name }}" hidden
+           style="--wp-bg: {{ project.theme.bg | default: '#1b1a18' }}; --wp-accent: {{ project.theme.accent | default: '#f2f0ea' }};">
+    <button type="button" class="miniapp-modal__close" data-close aria-label="닫기">&times;</button>
+    <div class="miniapp-modal__hero wp-modal__hero">
+      <div class="wp-modal__art">{% capture modal_uid %}modal-{{ project.id }}{% endcapture %}{% include web-art/{{ project.id }}.html uid=modal_uid fit="meet" %}</div>
+      <img class="miniapp-modal__icon" src="{{ project.icon | relative_url }}" alt="">
+      <p class="eyebrow">Web Project{% if project.kicker %} — {{ project.kicker }}{% endif %}</p>
+      <h2 class="miniapp-modal__name">{{ project.name }}</h2>
+      {% if project.tagline %}<p class="miniapp-modal__tagline">{{ project.tagline }}</p>{% endif %}
+      {% include platforms.html list=project.platforms web_url=project.url %}
+    </div>
+    {% capture wp_actions %}{% include actions.html github_url=project.github_url privacy=project.privacy terms_url=project.terms_url %}{% endcapture %}
+    {% assign wp_actions = wp_actions | strip %}
+    {% if project.description or wp_actions != "" %}
+    <div class="miniapp-modal__body prose">
+      {{ project.description | markdownify }}
+      {{ wp_actions }}
+    </div>
+    {% endif %}
+  </section>
+  {% endfor %}
+</div>
+
+<script src="{{ '/assets/js/miniapps.js' | relative_url }}" defer></script>

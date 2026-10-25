@@ -75,7 +75,6 @@ permalink: /mini-apps/
     <button type="button" class="miniapp-modal__close" data-close aria-label="닫기">&times;</button>
     <div class="miniapp-modal__hero">
       <img class="miniapp-modal__icon" src="{{ app.icon | relative_url }}" alt="">
-      <p class="eyebrow">Mini App — {{ app.letter | upcase }}</p>
       <h2 class="miniapp-modal__name">{{ app.name }}</h2>
       {% if app.tagline %}<p class="miniapp-modal__tagline">{{ app.tagline }}</p>{% endif %}
       {% include platforms.html list=app.platforms apple_url=app.store_url web_url=app.web_url toss_url=app.toss_url %}
@@ -110,7 +109,6 @@ permalink: /mini-apps/
     <button type="button" class="miniapp-modal__close" data-close aria-label="닫기">&times;</button>
     <div class="miniapp-modal__hero">
       <img class="miniapp-modal__icon" src="{{ file.path | relative_url }}" alt="">
-      <p class="eyebrow">Mini App — {{ file.basename | upcase }}</p>
       <h2 class="miniapp-modal__name">Coming Soon...</h2>
       <p class="miniapp-modal__tagline">새로운 미니앱을 준비하고 있어요. 조금만 기다려주세요.</p>
     </div>

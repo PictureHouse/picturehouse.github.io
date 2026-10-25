@@ -36,6 +36,11 @@
     });
   });
 
+  // 백드롭 / 닫기 버튼
+  modal.addEventListener('click', function (e) {
+    if (e.target.closest('[data-close]')) close();
+  });
+
   // 키보드 화면이 없는 페이지(Web Projects)는 Escape로 닫기만 지원
   if (!document.querySelector('.keyboard')) {
     document.addEventListener('keydown', function (e) {
@@ -43,11 +48,6 @@
     });
     return;
   }
-
-  // 백드롭 / 닫기 버튼
-  modal.addEventListener('click', function (e) {
-    if (e.target.closest('[data-close]')) close();
-  });
 
   function physKey(code) {
     return document.querySelector('.key[data-phys="' + code + '"]');

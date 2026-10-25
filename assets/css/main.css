@@ -815,8 +815,6 @@ button.key { cursor: pointer; }
   margin-top: -42px;
 }
 
-.wp-modal .miniapp-modal__hero .eyebrow { color: var(--wp-accent); opacity: 0.9; }
-
 @media (prefers-reduced-motion: reduce) {
   .wp-art__mover,
   .wp-art__pulse { display: none; }
@@ -885,8 +883,6 @@ button.key { cursor: pointer; }
   padding: 72px 40px 56px;
   text-align: center;
 }
-
-.miniapp-modal__hero .eyebrow { color: rgba(242, 240, 234, 0.5); }
 
 .miniapp-modal__icon {
   width: 84px;

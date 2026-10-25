@@ -47,7 +47,6 @@ permalink: /web-projects/
     <div class="miniapp-modal__hero wp-modal__hero">
       <div class="wp-modal__art">{% capture modal_uid %}modal-{{ project.id }}{% endcapture %}{% include web-art/{{ project.id }}.html uid=modal_uid fit="meet" %}</div>
       <img class="miniapp-modal__icon" src="{{ project.icon | relative_url }}" alt="">
-      <p class="eyebrow">Web Project{% if project.kicker %} — {{ project.kicker }}{% endif %}</p>
       <h2 class="miniapp-modal__name">{{ project.name }}</h2>
       {% if project.tagline %}<p class="miniapp-modal__tagline">{{ project.tagline }}</p>{% endif %}
       {% include platforms.html list=project.platforms web_url=project.url %}

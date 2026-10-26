@@ -1090,6 +1090,16 @@ button.key { cursor: pointer; }
   margin-top: 48px;
 }
 
+.body-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  font-size: 0.66rem;
+}
+
+.body-actions .btn svg { flex-shrink: 0; }
+
 /* .prose a의 밑줄을 덮는다 */
 .prose .body-actions .btn { text-decoration: none; }
 

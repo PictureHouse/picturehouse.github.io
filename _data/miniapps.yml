@@ -13,7 +13,7 @@
 #   toss_url: https://...                  # Toss 태그 클릭 시 미니앱으로 이동 (선택)
 #   github_url: https://github.com/...     # 하단 GitHub 버튼 (선택)
 #   privacy: aurora                        # 하단 개인정보처리방침 버튼 — 앱 키 (선택)
-#                                          # _privacy/aurora.md(한국어) · aurora-en.md(영어, 선택)
+#                                          # _privacy/aurora.md(한국어) · aurora-en.md(영어) · aurora-ja.md(일본어, 선택)
 #   terms: aurora                          # 하단 이용약관 버튼 — 앱 키 (선택)
 #                                          # _terms/aurora.md(한국어) · aurora-en.md(영어, 선택)
 #   terms_url: https://...                 # 외부 이용약관 링크 (선택, terms가 없을 때)

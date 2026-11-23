@@ -79,7 +79,7 @@
   icon: /assets/icons/web/capital-travel.png
   url: https://capital-travel-web.vercel.app/
   platforms: [Web, Toss]
-  # toss_url: intoss://capital-travel        # 토스 미니앱 출시 후 주석 해제
+  toss_url: "https://service.toss.im/app-mini-home/shortcut?title=수도여행&appName=capital-travel&iconUrl=https%3A%2F%2Fstatic.toss.im%2Fappsintoss%2F36899%2Flive-managed-v1-9e4f477f-c8cc-40c4-8705-ccc875a7a0be.png&mode=launch"
   terms: capital-travel
   theme:
     bg: "#050a18"

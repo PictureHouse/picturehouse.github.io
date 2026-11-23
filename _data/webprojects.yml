@@ -12,6 +12,8 @@
 #     accent: "#ff2a20"
 #     on_accent: "#ffffff"                  # accent 위 글자색
 #   chips: [Tag A, Tag B]                   # 카드 하단 키워드 (선택)
+#   platforms: [Web, Toss]                  # 출시 플랫폼 태그 (선택)
+#   toss_url: intoss://...                  # Toss 태그 클릭 시 미니앱으로 이동 (선택)
 #   github_url / privacy / terms / terms_url # 팝업 하단 버튼 (선택, 미니앱과 동일)
 #   description: |                          # 팝업 본문, 마크다운 (선택)
 #     ## 소개
@@ -76,7 +78,9 @@
   kicker: Geography Game · globe.gl
   icon: /assets/icons/web/capital-travel.png
   url: https://capital-travel-web.vercel.app/
-  platforms: [Web]
+  platforms: [Web, Toss]
+  # toss_url: intoss://capital-travel        # 토스 미니앱 출시 후 주석 해제
+  terms: capital-travel
   theme:
     bg: "#050a18"
     accent: "#ffd60a"

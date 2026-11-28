@@ -25,6 +25,34 @@
 #     ## 소개
 #     ...
 
+- letter: b
+  name: My Blocker
+  tagline: 정해둔 사이트와 앱을 차단해 집중을 돕는 스크린 타임 앱
+  platforms: [iOS, iPadOS]
+  icon: /assets/icons/mini/b.png
+  privacy: myblocker
+  terms: myblocker
+  description: |
+    ## 소개
+
+    My Blocker는 스스로 정한 웹사이트와 앱을 정해진 기간 동안 차단해 집중을 돕는 앱입니다.
+    차단 기간 동안에는 앱 안에서도 항목을 지울 수 없어, 충동적으로 차단을 풀지 않도록 막아줍니다.
+
+    ## 주요 기능
+
+    - **사이트 · 앱 차단** — 고른 웹사이트와 앱(또는 앱 카테고리)을 정한 기간 동안, 또는 영구적으로 차단
+    - **집중모드** — 차단할 사이트 · 앱을 프리셋으로 저장하고 타이머로 집중 세션 진행,
+      남은 시간은 잠금 화면과 Dynamic Island에 표시
+    - **예약 집중** — 정해둔 요일과 시간에 집중 세션을 자동으로 시작하고 종료
+    - **집중 기록** — 집중 세션의 통계와 기록 확인
+    - **숨긴 목록** — 차단 항목을 목록에서 숨기고 Face ID 등 기기 인증으로 보호
+
+    ## 기술 노트
+
+    - Apple 스크린 타임 프레임워크(Family Controls · Managed Settings · Device Activity)로 차단하며,
+      선택한 앱은 이름 대신 Apple이 주는 불투명한 토큰으로만 다룹니다.
+    - 회원가입도 서버도 없이, 모든 데이터는 App Group 공유 저장소에 저장해 앱 · 위젯 · 공유 확장 · 스크린 타임 모니터가 함께 씁니다.
+
 - letter: d
   name: My Day Off
   tagline: 남은 연차와 예정된 휴가를 한 눈에 보는 연차 관리 앱
